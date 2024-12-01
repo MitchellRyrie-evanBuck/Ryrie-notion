@@ -1,46 +1,47 @@
 import { siteConfig } from './lib/site-config'
 
 export default siteConfig({
-  // the site's root Notion page (required)
+  // 网站的根 Notion 页面（必需）
   rootNotionPageId: '4e5b00cd24a44fcc891aad6d5730be8c',
 
-  // if you want to restrict pages to a single notion workspace (optional)
-  // (this should be a Notion ID; see the docs for how to extract this)
+  // 如果你想将页面限制在单个 Notion 工作区中（可选）
+  // （这应该是一个 Notion ID；查看文档了解如何提取）
   rootNotionSpaceId: null,
 
-  // basic site info (required)
+  // 基本网站信息（必需）
   name: 'Next.js Notion Starter Kit',
-  domain: 'Ryrie-notion.transitivebullsh.it',
-  author: 'Travis Fischer',
+  domain: 'closer.ink',
+  // https://closer.ink/
+  author: 'Mitchell Ryrie',
 
-  // open graph metadata (optional)
+  // open graph 元数据（可选）
   description: 'Example Next.js Notion Starter Kit Site',
 
-  // social usernames (optional)
-  twitter: 'transitive_bs',
-  github: 'transitive-bullshit',
-  linkedin: 'fisch2',
-  // mastodon: '#', // optional mastodon profile URL, provides link verification
-  // newsletter: '#', // optional newsletter URL
-  // youtube: '#', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
+  // 社交媒体用户名（可选）
+  twitter: 'liuxiao_wen',
+  github: 'MitchellRyrie-evanBuck',
+  linkedin: 'liuxiao_wen',
+  // mastodon: '#', // 可选的 mastodon 个人资料 URL，提供链接验证
+  // newsletter: '#', // 可选的通讯 URL
+  youtube: '@xiaowenliu5603', // 可选的 youtube 频道名称或 `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
 
-  // default notion icon and cover images for site-wide consistency (optional)
-  // page-specific values will override these site-wide defaults
-  defaultPageIcon: null,
+  // 网站范围内一致性的默认 notion 图标和封面图片（可选）
+  // 页面特定的值将覆盖这些网站范围的默认值
+  defaultPageIcon: 'https://closer.ink/page-icon.png',
   defaultPageCover: null,
   defaultPageCoverPosition: 0.5,
 
-  // whether or not to enable support for LQIP preview images (optional)
+  // 是否启用 LQIP 预览图片支持（可选）
   isPreviewImageSupportEnabled: true,
 
-  // whether or not redis is enabled for caching generated preview images (optional)
-  // NOTE: if you enable redis, you need to set the `REDIS_HOST` and `REDIS_PASSWORD`
-  // environment variables. see the readme for more info
-  isRedisEnabled: false,
+  // 是否启用 redis 用于缓存生成的预览图片（可选）
+  // 注意：如果启用 redis，你需要设置 `REDIS_HOST` 和 `REDIS_PASSWORD`
+  // 环境变量。查看 readme 获取更多信息
+  isRedisEnabled: true,
 
-  // map of notion page IDs to URL paths (optional)
-  // any pages defined here will override their default URL paths
-  // example:
+  // Notion 页面 ID 到 URL 路径的映射（可选）
+  // 这里定义的任何页面都将覆盖其默认 URL 路径
+  // 示例：
   //
   // pageUrlOverrides: {
   //   '/foo': '067dd719a912471ea9a3ac10710e7fdf',
@@ -48,18 +49,22 @@ export default siteConfig({
   // }
   pageUrlOverrides: null,
 
-  // whether to use the default notion navigation style or a custom one with links to
-  // important pages. To use `navigationLinks`, set `navigationStyle` to `custom`.
-  navigationStyle: 'default'
-  // navigationStyle: 'custom',
-  // navigationLinks: [
-  //   {
-  //     title: 'About',
-  //     pageId: 'f1199d37579b41cbabfc0b5174f4256a'
-  //   },
-  //   {
-  //     title: 'Contact',
-  //     pageId: '6a29ebcb935a4f0689fe661ab5f3b8d1'
-  //   }
-  // ]
+  pageUrlAdditions: {
+    // '/the-social-audio-revolution': 'c4deaf33cc924ad7a5b9f69c6ae04a01'
+  },
+
+  // 是否使用默认的 notion 导航样式或带有重要页面链接的自定义样式
+  // 要使用 `navigationLinks`，请将 `navigationStyle` 设置为 `custom`
+  // navigationStyle: 'default',
+  navigationStyle: 'custom',
+  navigationLinks: [
+    {
+      title: 'About',
+      pageId: '14e8b35ba5da8092a4c8fba105a199f5'
+    },
+    {
+      title: 'Life Notes',
+      pageId: '14f8b35ba5da80e9967cd8aacbba6729'
+    }
+  ]
 })

@@ -4,7 +4,13 @@ import Image from 'next/legacy/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { type PageBlock } from 'notion-types'
-import { formatDate, getBlockTitle, getPageProperty } from 'notion-utils'
+import {
+  formatDate,
+  getBlockTitle,
+  getPageProperty,
+  normalizeTitle,
+  parsePageId
+} from 'notion-utils'
 import * as React from 'react'
 import BodyClassName from 'react-body-classname'
 import {
@@ -80,15 +86,15 @@ const Collection = dynamic(() =>
     (m) => m.Collection
   )
 )
-const Equation = dynamic(() =>
-  import('react-notion-x/build/third-party/equation').then((m) => m.Equation)
-)
-const Pdf = dynamic(
-  () => import('react-notion-x/build/third-party/pdf').then((m) => m.Pdf),
-  {
-    ssr: false
-  }
-)
+// const Equation = dynamic(() =>
+//   import('react-notion-x/build/third-party/equation').then((m) => m.Equation)
+// )
+// const Pdf = dynamic(
+//   () => import('react-notion-x/build/third-party/pdf').then((m) => m.Pdf),
+//   {
+//     ssr: false
+//   }
+// )
 const Modal = dynamic(
   () =>
     import('react-notion-x/build/third-party/modal').then((m) => {
@@ -152,11 +158,35 @@ const propertyTextValue = (
   return defaultFn()
 }
 
+const propertySelectValue = (
+  { schema, value, key, pageHeader },
+  defaultFn: () => React.ReactNode
+) => {
+  value = normalizeTitle(value)
+
+  if (pageHeader && schema.type === 'multi_select' && value) {
+    return (
+      <Link href={`/tags/${value}`} key={key}>
+        {defaultFn()}
+      </Link>
+    )
+  }
+
+  return defaultFn()
+}
+
+const HeroHeader = dynamic<{ className?: string }>(
+  () => import('./HeroHeader').then((m) => m.HeroHeader),
+  { ssr: false }
+)
+
 export function NotionPage({
   site,
   recordMap,
   error,
-  pageId
+  pageId,
+  tagsPage,
+  propertyToFilterName
 }: types.PageProps) {
   const router = useRouter()
   const lite = useSearchParam('lite')
@@ -167,14 +197,15 @@ export function NotionPage({
       nextLink: Link,
       Code,
       Collection,
-      Equation,
-      Pdf,
+      // Equation,
+      // Pdf,
       Modal,
       Tweet,
       Header: NotionPageHeader,
       propertyLastEditedTimeValue,
       propertyTextValue,
-      propertyDateValue
+      propertyDateValue,
+      propertySelectValue
     }),
     []
   )
@@ -199,6 +230,9 @@ export function NotionPage({
   //   parsePageId(block?.id) === parsePageId(site?.rootNotionPageId)
   const isBlogPost =
     block?.type === 'page' && block?.parent_table === 'collection'
+  const isBioPage =
+    parsePageId(block?.id) === parsePageId('14e8b35ba5da8092a4c8fba105a199f5')
+
 
   const showTableOfContents = !!isBlogPost
   const minTableOfContentsItems = 3
@@ -212,6 +246,16 @@ export function NotionPage({
 
   const footer = React.useMemo(() => <Footer />, [])
 
+  const pageCover = React.useMemo(() => {
+    if (isBioPage) {
+      return (
+        <HeroHeader className='notion-page-cover-wrapper notion-page-cover-hero' />
+      )
+    } else {
+      return null
+    }
+  }, [isBioPage])
+
   if (router.isFallback) {
     return <Loading />
   }
@@ -220,7 +264,10 @@ export function NotionPage({
     return <Page404 site={site} pageId={pageId} error={error} />
   }
 
-  const title = getBlockTitle(block, recordMap) || site.name
+  const name = getBlockTitle(block, recordMap) || site.name
+  const title =
+    tagsPage && propertyToFilterName ? `${propertyToFilterName} ${name}` : name
+
 
   console.log('notion page', {
     isDev: config.isDev,
@@ -269,7 +316,8 @@ export function NotionPage({
       <NotionRenderer
         bodyClassName={cs(
           styles.notion,
-          pageId === site.rootNotionPageId && 'index-page'
+          pageId === site.rootNotionPageId && 'index-page',
+          tagsPage && 'tags-page'
         )}
         darkMode={isDarkMode}
         components={components}
@@ -284,11 +332,14 @@ export function NotionPage({
         defaultPageIcon={config.defaultPageIcon}
         defaultPageCover={config.defaultPageCover}
         defaultPageCoverPosition={config.defaultPageCoverPosition}
+        linkTableTitleProperties={false}
         mapPageUrl={siteMapPageUrl}
         mapImageUrl={mapImageUrl}
         searchNotion={config.isSearchEnabled ? searchNotion : null}
         pageAside={pageAside}
         footer={footer}
+        pageTitle={tagsPage && propertyToFilterName ? title : undefined}
+        pageCover={pageCover}
       />
 
       {/* <GitHubShareButton /> */}
