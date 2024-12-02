@@ -2,7 +2,7 @@ import { siteConfig } from './lib/site-config'
 
 export default siteConfig({
   // 网站的根 Notion 页面（必需）
-  rootNotionPageId: '4e5b00cd24a44fcc891aad6d5730be8c',
+  rootNotionPageId: '7875426197cf461698809def95960ebf',
 
   // 如果你想将页面限制在单个 Notion 工作区中（可选）
   // （这应该是一个 Notion ID；查看文档了解如何提取）
@@ -10,7 +10,7 @@ export default siteConfig({
 
   // 基本网站信息（必需）
   name: 'Next.js Notion Starter Kit',
-  domain: 'closer.ink',
+  domain: 'nextjs-notion-starter-kit.transitivebullsh.it',
   // https://closer.ink/
   author: 'Mitchell Ryrie',
 
@@ -27,7 +27,7 @@ export default siteConfig({
 
   // 网站范围内一致性的默认 notion 图标和封面图片（可选）
   // 页面特定的值将覆盖这些网站范围的默认值
-  defaultPageIcon: 'https://closer.ink/page-icon.png',
+  defaultPageIcon: null,
   defaultPageCover: null,
   defaultPageCoverPosition: 0.5,
 
@@ -37,7 +37,7 @@ export default siteConfig({
   // 是否启用 redis 用于缓存生成的预览图片（可选）
   // 注意：如果启用 redis，你需要设置 `REDIS_HOST` 和 `REDIS_PASSWORD`
   // 环境变量。查看 readme 获取更多信息
-  isRedisEnabled: true,
+  isRedisEnabled: false,
 
   // Notion 页面 ID 到 URL 路径的映射（可选）
   // 这里定义的任何页面都将覆盖其默认 URL 路径
@@ -57,14 +57,14 @@ export default siteConfig({
   // 要使用 `navigationLinks`，请将 `navigationStyle` 设置为 `custom`
   // navigationStyle: 'default',
   navigationStyle: 'custom',
-  navigationLinks: [
-    {
-      title: 'About',
-      pageId: '14e8b35ba5da8092a4c8fba105a199f5'
-    },
-    {
-      title: 'Life Notes',
-      pageId: '14f8b35ba5da80e9967cd8aacbba6729'
-    }
-  ]
+  // navigationLinks: [
+  //   {
+  //     title: 'About',
+  //     pageId: '14e8b35ba5da8092a4c8fba105a199f5'
+  //   },
+  //   {
+  //     title: 'Life Notes',
+  //     pageId: '14f8b35ba5da80e9967cd8aacbba6729'
+  //   }
+  // ]
 })
