@@ -2,7 +2,7 @@ import { siteConfig } from './lib/site-config'
 
 export default siteConfig({
   // 网站的根 Notion 页面（必需）
-  rootNotionPageId: '7875426197cf461698809def95960ebf',
+  rootNotionPageId: '4e5b00cd24a44fcc891aad6d5730be8c',
 
   // 如果你想将页面限制在单个 Notion 工作区中（可选）
   // （这应该是一个 Notion ID；查看文档了解如何提取）
@@ -10,8 +10,8 @@ export default siteConfig({
 
   // 基本网站信息（必需）
   name: 'Next.js Notion Starter Kit',
-  domain: 'nextjs-notion-starter-kit.transitivebullsh.it',
-  // https://closer.ink/
+  domain: 'ryrie.ink',
+  // https://ryrie.ink/
   author: 'Mitchell Ryrie',
 
   // open graph 元数据（可选）
@@ -27,7 +27,7 @@ export default siteConfig({
 
   // 网站范围内一致性的默认 notion 图标和封面图片（可选）
   // 页面特定的值将覆盖这些网站范围的默认值
-  defaultPageIcon: null,
+  defaultPageIcon: 'https://ryrie.ink/page-icon.png',
   defaultPageCover: null,
   defaultPageCoverPosition: 0.5,
 
@@ -58,13 +58,13 @@ export default siteConfig({
   // navigationStyle: 'default',
   navigationStyle: 'custom',
   // navigationLinks: [
-  //   {
-  //     title: 'About',
-  //     pageId: '14e8b35ba5da8092a4c8fba105a199f5'
-  //   },
-  //   {
-  //     title: 'Life Notes',
-  //     pageId: '14f8b35ba5da80e9967cd8aacbba6729'
-  //   }
+    // {
+    //   title: 'About',
+    //   pageId: '14e8b35ba5da8092a4c8fba105a199f5'
+    // },
+    // {
+    //   title: 'Life Notes',
+    //   pageId: '14f8b35ba5da80e9967cd8aacbba6729'
+    // }
   // ]
 })
