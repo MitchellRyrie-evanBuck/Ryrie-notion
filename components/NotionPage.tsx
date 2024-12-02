@@ -9,7 +9,7 @@ import {
   getBlockTitle,
   getPageProperty,
   normalizeTitle,
-  // parsePageId
+  parsePageId
 } from 'notion-utils'
 import * as React from 'react'
 import BodyClassName from 'react-body-classname'
@@ -36,6 +36,7 @@ import { Page404 } from './Page404'
 import { PageAside } from './PageAside'
 import { PageHead } from './PageHead'
 import styles from './styles.module.css'
+
 
 // -----------------------------------------------------------------------------
 // dynamic imports for optional components
@@ -175,10 +176,10 @@ const propertySelectValue = (
   return defaultFn()
 }
 
-// const HeroHeader = dynamic<{ className?: string }>(
-//   () => import('./HeroHeader').then((m) => m.HeroHeader),
-//   { ssr: false }
-// )
+const HeroHeader = dynamic<{ className?: string }>(
+  () => import('./HeroHeader').then((m) => m.HeroHeader),
+  { ssr: false }
+)
 
 export function NotionPage({
   site,
@@ -230,9 +231,8 @@ export function NotionPage({
   //   parsePageId(block?.id) === parsePageId(site?.rootNotionPageId)
   const isBlogPost =
     block?.type === 'page' && block?.parent_table === 'collection'
-  // const isBioPage =
-  //   parsePageId(block?.id) === parsePageId('8d0062776d0c4afca96eb1ace93a7538')
-
+  const isBioPage =
+    parsePageId(block?.id) === config.rootNotionAboutPageId
 
   const showTableOfContents = !!isBlogPost
   const minTableOfContentsItems = 3
@@ -246,15 +246,15 @@ export function NotionPage({
 
   const footer = React.useMemo(() => <Footer />, [])
 
-  // const pageCover = React.useMemo(() => {
-  //   if (isBioPage) {
-  //     return (
-  //       <HeroHeader className='notion-page-cover-wrapper notion-page-cover-hero' />
-  //     )
-  //   } else {
-  //     return null
-  //   }
-  // }, [isBioPage])
+  const pageCover = React.useMemo(() => {
+    if (isBioPage) {
+      return (
+        <HeroHeader className='notion-page-cover-wrapper notion-page-cover-hero' />
+      )
+    } else {
+      return null
+    }
+  }, [isBioPage])
 
   if (router.isFallback) {
     return <Loading />
@@ -338,8 +338,8 @@ export function NotionPage({
         searchNotion={config.isSearchEnabled ? searchNotion : null}
         pageAside={pageAside}
         footer={footer}
-        // pageTitle={tagsPage && propertyToFilterName ? title : undefined}
-        // pageCover={pageCover}
+        pageTitle={tagsPage && propertyToFilterName ? title : undefined}
+        pageCover={pageCover}
       />
 
       {/* <GitHubShareButton /> */}
