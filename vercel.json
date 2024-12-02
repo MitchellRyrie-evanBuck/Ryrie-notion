@@ -1,9 +1,9 @@
 {
   "version": 2,
   "framework": "nextjs",
-  "buildCommand": "npm run build",
-  "devCommand": "npm run dev",
-  "installCommand": "npm install",
+  "buildCommand": "pnpm run build",
+  "devCommand": "pnpm run dev",
+  "installCommand": "pnpm install",
   "env": {
     "NOTION_API_KEY": "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",
     "NOTION_ACTIVE_USER": "e88c84b3a19145b0a342d3d9f2527f77"
