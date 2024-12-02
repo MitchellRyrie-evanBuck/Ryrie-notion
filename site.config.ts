@@ -11,7 +11,7 @@ export default siteConfig({
   rootNotionSpaceId: '5fb26c11-110c-4298-be8b-94a73549c3f4', // 5fb26c11-110c-4298-be8b-94a73549c3f4
 
   // 基本网站信息（必需）
-  name: 'Next.js Notion Starter Kit',
+  name: 'Ryrie Notion',
   domain: 'ryrie.ink',
   // https://ryrie.ink/
   author: 'Mitchell Ryrie',
