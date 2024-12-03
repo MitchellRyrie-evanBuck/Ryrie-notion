@@ -2,7 +2,7 @@ import { siteConfig } from './lib/site-config'
 
 export default siteConfig({
   // 网站的根 Notion 页面（必需）
-  rootNotionPageId: '4e5b00cd24a44fcc891aad6d5730be8c',
+  rootNotionPageId: '14f8b35ba5da80e9967cd8aacbba6729',
 
   aboutPageId: '14e8b35ba5da8092a4c8fba105a199f5',
 
@@ -65,8 +65,8 @@ export default siteConfig({
       pageId: '14e8b35ba5da8092a4c8fba105a199f5'
     },
     {
-      title: 'Life Notes',
-      pageId: '14f8b35ba5da80e9967cd8aacbba6729'
+      title: 'Technology',
+      pageId: '4e5b00cd24a44fcc891aad6d5730be8c'
     }
   ]
 })
