@@ -34,7 +34,7 @@ export default siteConfig({
   defaultPageCoverPosition: 0.5,
 
   // 是否启用 LQIP 预览图片支持（可选）
-  isPreviewImageSupportEnabled: false,
+  isPreviewImageSupportEnabled: true,
 
   // 是否启用 redis 用于缓存生成的预览图片（可选）
   // 注意：如果启用 redis，你需要设置 `REDIS_HOST` 和 `REDIS_PASSWORD`
@@ -49,11 +49,14 @@ export default siteConfig({
   //   '/foo': '067dd719a912471ea9a3ac10710e7fdf',
   //   '/bar': '0be6efce9daf42688f65c76b89f8eb27'
   // }
-  pageUrlOverrides: null,
-
-  pageUrlAdditions: {
-    // '/the-social-audio-revolution': 'c4deaf33cc924ad7a5b9f69c6ae04a01'
+  pageUrlOverrides: {
+    '/about': '14e8b35ba5da8092a4c8fba105a199f5',
+    '/technology': '4e5b00cd24a44fcc891aad6d5730be8c'
   },
+
+  // pageUrlAdditions: {
+    // '/the-social-audio-revolution': 'c4deaf33cc924ad7a5b9f69c6ae04a01'
+  // },
 
   // 是否使用默认的 notion 导航样式或带有重要页面链接的自定义样式
   // 要使用 `navigationLinks`，请将 `navigationStyle` 设置为 `custom`
