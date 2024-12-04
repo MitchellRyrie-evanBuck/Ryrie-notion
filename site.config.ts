@@ -29,7 +29,7 @@ export default siteConfig({
 
   // 网站范围内一致性的默认 notion 图标和封面图片（可选）
   // 页面特定的值将覆盖这些网站范围的默认值
-  defaultPageIcon: 'https://ryrie.ink/page-icon.jpg',
+  defaultPageIcon: 'https://ryrie.ink/ryrie.png',
   defaultPageCover: null,
   defaultPageCoverPosition: 0.5,
 
