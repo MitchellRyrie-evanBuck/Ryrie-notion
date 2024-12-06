@@ -18,7 +18,9 @@ export default withBundleAnalyzer({
       { protocol: 'https', hostname: 's3.us-west-2.amazonaws.com' },
       { protocol: 'https', hostname: 's3-us-west-2.amazonaws.com' },
       { protocol: 'https', hostname: 'public.notion-static.com' },
-      { protocol: 'https', hostname: 'childlike-diagnostic-c0e.notion.site' }
+      { protocol: 'https', hostname: 'childlike-diagnostic-c0e.notion.site' },
+      { protocol: 'https', hostname: 'ryrie.ink' },
+      { protocol: 'https', hostname: 'prod-files-secure.s3.us-west-2.amazonaws.com' }
     ],
     formats: ['image/avif', 'image/webp'],
     dangerouslyAllowSVG: true,
