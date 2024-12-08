@@ -51,7 +51,8 @@ export default siteConfig({
   // }
   pageUrlOverrides: {
     '/about': '14e8b35ba5da8092a4c8fba105a199f5',
-    '/technology': '4e5b00cd24a44fcc891aad6d5730be8c'
+    '/technology': '4e5b00cd24a44fcc891aad6d5730be8c',
+    '/record': '1508b35ba5da802cbbdadff027583840'
   },
 
   // pageUrlAdditions: {
@@ -70,6 +71,10 @@ export default siteConfig({
     {
       title: 'Technology',
       pageId: '4e5b00cd24a44fcc891aad6d5730be8c'
+    },
+    {
+      title: 'Record',
+      pageId: '1508b35ba5da802cbbdadff027583840'
     }
   ]
 })

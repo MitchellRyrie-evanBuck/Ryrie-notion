@@ -84,9 +84,34 @@ const Code = dynamic(() =>
 
 const Collection = dynamic(() =>
   import('react-notion-x/build/third-party/collection').then(
-    (m) => m.Collection
+    (m) => {
+      function CollectionWrapper(props: {
+        block: any;
+        className?: string;
+        ctx: any;
+        collection: any;
+        collectionView: any;
+        collectionData: any;
+      }) {
+        const { collectionView } = props
+        if (collectionView) {
+          collectionView.type = 'gallery'
+          if (!collectionView.format) {
+            collectionView.format = {}
+          }
+          collectionView.format.gallery_cover_size = "medium"
+          collectionView.format.gallery_cover_aspect = "contain"
+          collectionView.format.gallery_properties = collectionView.format.gallery_properties || []
+          collectionView.format.gallery_cover = true
+          collectionView.format.columns = 2
+        }
+        return <m.Collection {...props} />
+      }
+      return CollectionWrapper
+    }
   )
 )
+
 // const Equation = dynamic(() =>
 //   import('react-notion-x/build/third-party/equation').then((m) => m.Equation)
 // )
@@ -316,7 +341,7 @@ export function NotionPage({
       <NotionRenderer
         bodyClassName={cs(
           styles.notion,
-          pageId === site.rootNotionPageId && 'index-page',
+           'index-page',
           tagsPage && 'tags-page'
         )}
         darkMode={isDarkMode}
@@ -340,6 +365,7 @@ export function NotionPage({
         footer={footer}
         pageTitle={tagsPage && propertyToFilterName ? title : undefined}
         pageCover={pageCover}
+
       />
 
       {/* <GitHubShareButton /> */}
