@@ -1,10 +1,10 @@
-import { FaEnvelopeOpenText } from '@react-icons/all-files/fa/FaEnvelopeOpenText'
-import { FaGithub } from '@react-icons/all-files/fa/FaGithub'
+// import { FaEnvelopeOpenText } from '@react-icons/all-files/fa/FaEnvelopeOpenText'
+// import { FaGithub } from '@react-icons/all-files/fa/FaGithub'
 // import { FaLinkedin } from '@react-icons/all-files/fa/FaLinkedin'
-import { FaMastodon } from '@react-icons/all-files/fa/FaMastodon'
-import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter'
-import { FaYoutube } from '@react-icons/all-files/fa/FaYoutube'
-import { FaZhihu } from '@react-icons/all-files/fa/FaZhihu'
+// import { FaMastodon } from '@react-icons/all-files/fa/FaMastodon'
+// import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter'
+// import { FaYoutube } from '@react-icons/all-files/fa/FaYoutube'
+// import { FaZhihu } from '@react-icons/all-files/fa/FaZhihu'
 import { IoMoonSharp } from '@react-icons/all-files/io5/IoMoonSharp'
 import { IoSunnyOutline } from '@react-icons/all-files/io5/IoSunnyOutline'
 import * as React from 'react'
@@ -53,7 +53,7 @@ export function FooterImpl() {
         )}
       </div>
 
-      <div className={styles.social}>
+      {/* <div className={styles.social}>
         {config.twitter && (
           <a
             className={styles.twitter}
@@ -124,7 +124,7 @@ export function FooterImpl() {
             <FaYoutube />
           </a>
         )}
-      </div>
+      </div> */}
     </footer>
   )
 }
