@@ -1,0 +1,10 @@
+.notion-table{
+  --notion-max-width: 900px;
+  max-width: var(--notion-max-width) !important;
+  display: flex;
+}
+.notion-table .notion-table-view{
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin: auto;
+}
