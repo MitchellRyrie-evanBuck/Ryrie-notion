@@ -1,5 +1,6 @@
-import type * as React from 'react'
+import type React from 'react'
 import cs from 'classnames'
+import { motion } from 'framer-motion'
 
 import * as config from '@/lib/config'
 
@@ -69,25 +70,55 @@ const socialLinks: SocialLink[] = [
   }
 ].filter(Boolean)
 
-export function PageSocial() {
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+}
+
+const item = {
+  hidden: { opacity: 0, x: 70 },
+  show: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 15
+    }
+  }
+}
+
+// eslint-disable-next-line react/function-component-definition
+export const PageSocial: React.FC = () => {
   return (
-    <div className={styles.pageSocial}>
-      {socialLinks.map((action) => (
-        <a
+    <motion.div
+      className={styles.pageSocial}
+      variants={container}
+      initial="hidden"
+      animate="show"
+    >
+      {socialLinks.map((action, _index) => (
+        <motion.a
           className={cs(styles.action, styles[action.name])}
           href={action.href}
           key={action.name}
           title={action.title}
           target='_blank'
           rel='noopener noreferrer'
+          variants={item}
         >
           <div className={styles.actionBg}>
             <div className={styles.actionBgPane} />
           </div>
 
           <div className={styles.actionBg}>{action.icon}</div>
-        </a>
+        </motion.a>
       ))}
-    </div>
+    </motion.div>
   )
 }
