@@ -8,6 +8,7 @@ import { Breadcrumbs, Header, Search, useNotionContext } from 'react-notion-x'
 
 import { isSearchEnabled, navigationLinks, navigationStyle } from '@/lib/config'
 import { useDarkMode } from '@/lib/use-dark-mode'
+import Link from "next/link";
 
 import styles from './styles.module.css'
 
@@ -24,12 +25,15 @@ function ToggleThemeButton() {
   }, [toggleDarkMode])
 
   return (
-    <div
-      className={cs('breadcrumb', 'button', !hasMounted && styles.hidden)}
+    <motion.div
+      whileHover={{ scale: 1.4 }}
+      whileTap={{ scale: 0.9 }}
+      transition={{ type: "spring", stiffness: 400, damping: 10 }}
+      className={`${cs(!hasMounted && styles.hidden, )} px-2 cursor-pointer`}
       onClick={onToggleTheme}
     >
       {hasMounted && isDarkMode ? <IoMoonSharp /> : <IoSunnyOutline />}
-    </div>
+    </motion.div>
   )
 }
 
@@ -52,7 +56,7 @@ export function NotionPageHeader({
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
       <div className='notion-nav-header'>
-        <Breadcrumbs block={block} rootOnly={false} />
+        {block && <Breadcrumbs block={block} rootOnly={false} />}
 
         <div className='notion-nav-header-rhs breadcrumbs'>
           {navigationLinks
@@ -94,9 +98,20 @@ export function NotionPageHeader({
             })
             .filter(Boolean)}
 
+          <Link href="/custom" className="">
+            <motion.div
+              className={`h-full px-2`}
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ scale: 0.8 }}
+              layout
+            >
+              <span >Me</span>
+            </motion.div>
+          </Link>
+
           <ToggleThemeButton />
 
-          {isSearchEnabled && <Search block={block} title={null} />}
+          {isSearchEnabled && block && <Search block={block} title={null} />}
         </div>
       </div>
     </motion.header>

@@ -64,10 +64,7 @@ export default siteConfig({
   // navigationStyle: 'default',
   navigationStyle: 'custom',
   navigationLinks: [
-    {
-      title: 'About',
-      pageId: '14e8b35ba5da8092a4c8fba105a199f5'
-    },
+
     {
       title: 'Web3',
       pageId: '4e5b00cd24a44fcc891aad6d5730be8c'
@@ -75,6 +72,10 @@ export default siteConfig({
     {
       title: 'Record',
       pageId: '1508b35ba5da802cbbdadff027583840'
-    }
+    },
+    {
+      title: 'About',
+      pageId: '14e8b35ba5da8092a4c8fba105a199f5'
+    },
   ]
 })
