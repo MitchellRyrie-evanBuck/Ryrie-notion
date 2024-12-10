@@ -77,7 +77,8 @@ const container = {
     transition: {
       staggerChildren: 0.1
     }
-  }
+  },
+
 }
 
 const item = {
@@ -111,6 +112,9 @@ export const PageSocial: React.FC = () => {
           target='_blank'
           rel='noopener noreferrer'
           variants={item}
+          whileHover={{ scale: 1.2 }}
+          whileTap={{ scale: 0.9 }}
+          transition={{ type: "spring", stiffness: 400, damping: 10 }}
         >
           <div className={styles.actionBg}>
             <div className={styles.actionBgPane} />

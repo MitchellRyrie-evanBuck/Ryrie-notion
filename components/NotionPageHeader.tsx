@@ -63,23 +63,31 @@ export function NotionPageHeader({
 
               if (link.pageId) {
                 return (
-                  <components.PageLink
-                    href={mapPageUrl(link.pageId)}
-                    key={index}
-                    className={cs(styles.navLink, 'breadcrumb', 'button')}
+                  <motion.div
+                    whileHover={{ scale: 1.2 }}
+                    whileTap={{ scale: 0.9 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
                   >
-                    {link.title}
-                  </components.PageLink>
+                    <components.PageLink
+                      href={mapPageUrl(link.pageId)}
+                      key={index}
+                      className={cs(styles.navLink, 'breadcrumb', 'button')}
+                    >
+                      {link.title}
+                    </components.PageLink>
+                  </motion.div>
                 )
               } else {
                 return (
-                  <components.Link
-                    href={link.url}
-                    key={index}
-                    className={cs(styles.navLink, 'breadcrumb', 'button')}
-                  >
+                  <motion.div>
+                    <components.Link
+                      href={link.url}
+                      key={index}
+                      className={cs(styles.navLink, 'breadcrumb', 'button')}
+                    >
                     {link.title}
-                  </components.Link>
+                    </components.Link>
+                  </motion.div>
                 )
               }
             })
