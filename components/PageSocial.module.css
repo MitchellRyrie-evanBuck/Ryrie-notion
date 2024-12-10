@@ -11,8 +11,8 @@
   border-radius: 50%;
   border: 2px solid var(--fg-color-6);
   transition: all 300ms ease-out;
-  width: 3em;
-  height: 3em;
+  width: 2.8em;
+  height: 2.8em;
   margin: 0 0 1em;
   display: flex;
   flex-direction: column;
