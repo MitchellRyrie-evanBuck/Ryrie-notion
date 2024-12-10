@@ -64,6 +64,7 @@ export function NotionPageHeader({
               if (link.pageId) {
                 return (
                   <motion.div
+                    className='px-2'
                     whileHover={{ scale: 1.2 }}
                     whileTap={{ scale: 0.9 }}
                     transition={{ type: "spring", stiffness: 400, damping: 10 }}
@@ -71,7 +72,7 @@ export function NotionPageHeader({
                     <components.PageLink
                       href={mapPageUrl(link.pageId)}
                       key={index}
-                      className={cs(styles.navLink, 'breadcrumb', 'button')}
+                      className={`${cs(styles.navLink)} `}
                     >
                       {link.title}
                     </components.PageLink>
@@ -83,7 +84,7 @@ export function NotionPageHeader({
                     <components.Link
                       href={link.url}
                       key={index}
-                      className={cs(styles.navLink, 'breadcrumb', 'button')}
+                      className={cs(styles.navLink, )}
                     >
                     {link.title}
                     </components.Link>
