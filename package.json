@@ -40,6 +40,7 @@
     "framer-motion": "^11.13.3",
     "ky": "^1.7.2",
     "lodash.omit": "^4.5.0",
+    "lottie-react": "^2.4.0",
     "lqip-modern": "^2.2.1",
     "motion": "^11.13.3",
     "next": "^15.0.4",
