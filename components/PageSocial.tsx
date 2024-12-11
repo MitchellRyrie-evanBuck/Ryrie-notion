@@ -94,7 +94,6 @@ const item = {
   }
 }
 
-// eslint-disable-next-line react/function-component-definition
 export const PageSocial: React.FC = () => {
   return (
     <motion.div

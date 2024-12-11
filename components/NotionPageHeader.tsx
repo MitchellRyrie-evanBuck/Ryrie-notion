@@ -3,12 +3,12 @@ import { IoMoonSharp } from '@react-icons/all-files/io5/IoMoonSharp'
 import { IoSunnyOutline } from '@react-icons/all-files/io5/IoSunnyOutline'
 import cs from 'classnames'
 import { motion } from 'framer-motion'
+import Link from "next/link";
 import * as React from 'react'
 import { Breadcrumbs, Header, Search, useNotionContext } from 'react-notion-x'
 
 import { isSearchEnabled, navigationLinks, navigationStyle } from '@/lib/config'
 import { useDarkMode } from '@/lib/use-dark-mode'
-import Link from "next/link";
 
 import styles from './styles.module.css'
 
@@ -72,6 +72,7 @@ export function NotionPageHeader({
                     whileHover={{ scale: 1.2 }}
                     whileTap={{ scale: 0.9 }}
                     transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                    key={index}
                   >
                     <components.PageLink
                       href={mapPageUrl(link.pageId)}
@@ -84,7 +85,9 @@ export function NotionPageHeader({
                 )
               } else {
                 return (
-                  <motion.div>
+                  <motion.div
+                    key={index}
+                  >
                     <components.Link
                       href={link.url}
                       key={index}
@@ -100,7 +103,7 @@ export function NotionPageHeader({
 
           <Link href="/custom" className="">
             <motion.div
-              className={`h-full px-2`}
+              className={`px-2 h-full`}
               whileHover={{ scale: 1.2 }}
               whileTap={{ scale: 0.8 }}
               layout
