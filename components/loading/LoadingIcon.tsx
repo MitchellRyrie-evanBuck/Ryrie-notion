@@ -1,6 +1,6 @@
 import cs from 'classnames'
 
-import styles from './styles.module.css'
+import styles from '../styles.module.css'
 
 export function LoadingIcon(props: any) {
   const { className, ...rest } = props
@@ -18,9 +18,9 @@ export function LoadingIcon(props: any) {
           y2='17.7832031%'
           id='linearGradient-1'
         >
-          <stop stopColor='rgba(164, 164, 164, 1)' offset='0%' />
+          <stop stopColor='rgba(88, 88, 88, 1)' offset='0%' />
           <stop
-            stopColor='rgba(164, 164, 164, 0)'
+            stopColor='rgba(88, 88, 88, 0)'
             stopOpacity='0'
             offset='100%'
           />
@@ -41,12 +41,12 @@ export function LoadingIcon(props: any) {
             <path
               d='M10,2 C4.4771525,2 0,6.4771525 0,12'
               id='Oval-2'
-              stroke='rgba(164, 164, 164, 1)'
+              stroke='rgba(88, 88, 88, 1)'
               strokeWidth='4'
             />
             <rect
               id='Rectangle-1'
-              fill='rgba(164, 164, 164, 1)'
+              fill='rgba(88, 88, 88, 1)'
               x='8'
               y='0'
               width='4'

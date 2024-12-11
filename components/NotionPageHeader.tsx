@@ -10,6 +10,7 @@ import { Breadcrumbs, Header, Search, useNotionContext } from 'react-notion-x'
 import { isSearchEnabled, navigationLinks, navigationStyle } from '@/lib/config'
 import { useDarkMode } from '@/lib/use-dark-mode'
 
+import { ImgSite } from './layout/ImgSite'
 import styles from './styles.module.css'
 
 function ToggleThemeButton() {
@@ -29,7 +30,7 @@ function ToggleThemeButton() {
       whileHover={{ scale: 1.4 }}
       whileTap={{ scale: 0.9 }}
       transition={{ type: "spring", stiffness: 400, damping: 10 }}
-      className={`${cs(!hasMounted && styles.hidden, )} px-2 cursor-pointer`}
+      className={`${cs(!hasMounted && styles.hidden,)} px-2 cursor-pointer`}
       onClick={onToggleTheme}
     >
       {hasMounted && isDarkMode ? <IoMoonSharp /> : <IoSunnyOutline />}
@@ -57,6 +58,8 @@ export function NotionPageHeader({
     >
       <div className='notion-nav-header'>
         {block && <Breadcrumbs block={block} rootOnly={false} />}
+        {!block && <ImgSite />}
+
 
         <div className='notion-nav-header-rhs breadcrumbs'>
           {navigationLinks
@@ -91,9 +94,9 @@ export function NotionPageHeader({
                     <components.Link
                       href={link.url}
                       key={index}
-                      className={cs(styles.navLink, )}
+                      className={cs(styles.navLink,)}
                     >
-                    {link.title}
+                      {link.title}
                     </components.Link>
                   </motion.div>
                 )
@@ -101,14 +104,14 @@ export function NotionPageHeader({
             })
             .filter(Boolean)}
 
-          <Link href="/custom" className="">
+          <Link href="/more" className="">
             <motion.div
               className={`px-2 h-full`}
               whileHover={{ scale: 1.2 }}
               whileTap={{ scale: 0.8 }}
               layout
             >
-              <span >Me</span>
+              <span >More</span>
             </motion.div>
           </Link>
 
