@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic'
-import React from 'react'
+import type { FC } from 'react'
 
 interface LottieAnimationProps {
   animationData: any
@@ -11,9 +11,9 @@ interface LottieAnimationProps {
 // 完全客户端渲染的 Lottie 组件
 const LottieComponent = dynamic(() => import('./LottieClient'), {
   ssr: false,
-  loading: () => <div className="animate-pulse bg-gray-200 h-full w-full" />
+  loading: () => <div className="w-full h-full bg-gray-200 animate-pulse" />
 })
 
-export const LottieAnimation: React.FC<LottieAnimationProps> = (props) => {
+export const LottieAnimation: FC<LottieAnimationProps> = (props) => {
   return <LottieComponent {...props} />
 }

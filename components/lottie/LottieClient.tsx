@@ -1,5 +1,6 @@
-import { type LottieOptions, useLottie } from 'lottie-react'
-import React from 'react'
+import type { LottieOptions } from 'lottie-react'
+import { useLottie } from 'lottie-react'
+import type { FC } from 'react'
 
 interface LottieClientProps {
   animationData: any
@@ -8,7 +9,7 @@ interface LottieClientProps {
   autoplay?: boolean
 }
 
-const LottieClient: React.FC<LottieClientProps> = ({
+const LottieClient: FC<LottieClientProps> = ({
   animationData,
   className = '',
   loop = true,
