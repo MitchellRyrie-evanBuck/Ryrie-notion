@@ -1,6 +1,6 @@
 {
   "root": true,
-  "extends": ["@fisch0920/eslint-config" ],
+  "extends": ["next/core-web-vitals"],
   "rules": {
     "react/prop-types": "off",
     "unicorn/no-array-reduce": "off",
@@ -13,6 +13,9 @@
     "jsx-a11y/interactive-supports-focus": "off",
     "jsx-a11y/anchor-is-valid": "off",
     "@typescript-eslint/naming-convention": "off",
-    "react/function-component-definition": "off"
+    "react/function-component-definition": "off",
+    "@typescript-eslint/consistent-type-imports": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
   }
 }
