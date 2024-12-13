@@ -7,11 +7,13 @@ import Link from "next/link";
 import * as React from 'react'
 import { Breadcrumbs, Header, Search, useNotionContext } from 'react-notion-x'
 
-import { isSearchEnabled, navigationLinks, navigationStyle } from '@/lib/config'
+import { isSearchEnabled, navigationLinks, navigationStyle, rootNotionPageId } from '@/lib/config'
 import { useDarkMode } from '@/lib/use-dark-mode'
 
 import { ImgSite } from './layout/ImgSite'
 import styles from './styles.module.css'
+
+import { removeHyphenAndJoin } from "@/lib/utils/string-utils";
 
 function ToggleThemeButton() {
   const [hasMounted, setHasMounted] = React.useState(false)
@@ -57,9 +59,9 @@ export function NotionPageHeader({
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
       <div className='notion-nav-header'>
-        {block && <Breadcrumbs block={block} rootOnly={false} />}
+        {block && removeHyphenAndJoin(block.id) !== rootNotionPageId && <Breadcrumbs block={block} rootOnly={false} />}
+        {block && removeHyphenAndJoin(block.id) === rootNotionPageId && <ImgSite />}
         {!block && <ImgSite />}
-
 
         <div className='notion-nav-header-rhs breadcrumbs'>
           {navigationLinks
