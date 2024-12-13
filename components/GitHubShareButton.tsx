@@ -3,7 +3,7 @@ import styles from './styles.module.css'
 export function GitHubShareButton() {
   return (
     <a
-      href='https://github.com/MitchellRyrie-evanBuck/Ryrie-notion'
+      href='https://github.com/MitchellRyrie-evanBuck'
       target='_blank'
       rel='noopener noreferrer'
       className={styles.githubCorner}
@@ -14,7 +14,7 @@ export function GitHubShareButton() {
         height='80'
         viewBox='0 0 250 250'
         style={{
-          fill: '#70B7FD',
+          fill: '#000',
           color: '#fff',
           position: 'absolute',
           zIndex: 1001,

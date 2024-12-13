@@ -11,7 +11,7 @@ export default siteConfig({
   rootNotionSpaceId: '5fb26c11-110c-4298-be8b-94a73549c3f4', // 5fb26c11-110c-4298-be8b-94a73549c3f4
 
   // 基本网站信息（必需）
-  name: 'Ryrie Notion',
+  name: 'Ryrie Lc',
   domain: 'ryrie.ink',
   // https://ryrie.ink/
   author: 'Mitchell Ryrie',
@@ -52,7 +52,8 @@ export default siteConfig({
   pageUrlOverrides: {
     '/about': '14e8b35ba5da8092a4c8fba105a199f5',
     '/web3': '4e5b00cd24a44fcc891aad6d5730be8c',
-    '/record': '1508b35ba5da802cbbdadff027583840'
+    '/record': '1508b35ba5da802cbbdadff027583840',
+    '/apple': '15a8b35ba5da8079bebccefe3f81b215'
   },
 
   // pageUrlAdditions: {
@@ -70,8 +71,12 @@ export default siteConfig({
       pageId: '4e5b00cd24a44fcc891aad6d5730be8c'
     },
     {
-      title: 'Record',
+      title: 'Notes',
       pageId: '1508b35ba5da802cbbdadff027583840'
+    },
+    {
+      title: 'Apple',
+      pageId: '15a8b35ba5da8079bebccefe3f81b215'
     },
     {
       title: 'About',
