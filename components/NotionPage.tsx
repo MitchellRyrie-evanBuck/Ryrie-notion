@@ -372,9 +372,7 @@ export function NotionPage({
       />
 
       <GitHubShareButton />
-      {
-        config.rootNotionPageId !== removeHyphenAndJoin(pageId) && <ActionHome />
-      }
+      {config.rootNotionPageId !== removeHyphenAndJoin(pageId) && <ActionHome />}
     </>
   )
 }
