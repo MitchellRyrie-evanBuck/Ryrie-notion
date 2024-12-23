@@ -32,7 +32,7 @@ function ToggleThemeButton() {
       whileHover={{ scale: 1.4 }}
       whileTap={{ scale: 0.9 }}
       transition={{ type: "spring", stiffness: 400, damping: 10 }}
-      className={`${cs(!hasMounted && styles.hidden,)} px-2 cursor-pointer`}
+      className={`${cs(!hasMounted && styles.hidden,)} px-2 cursor-pointer dark:text-neutral-200`}
       onClick={onToggleTheme}
     >
       {hasMounted && isDarkMode ? <IoMoonSharp /> : <IoSunnyOutline />}
@@ -53,7 +53,7 @@ export function NotionPageHeader({
 
   return (
     <motion.header
-      className='notion-header'
+      className='notion-header dark:bg-black'
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
@@ -73,7 +73,7 @@ export function NotionPageHeader({
               if (link.pageId) {
                 return (
                   <motion.div
-                    className='px-2'
+                    className='px-2 text-black dark:text-neutral-200'
                     whileHover={{ scale: 1.2 }}
                     whileTap={{ scale: 0.9 }}
                     transition={{ type: "spring", stiffness: 400, damping: 10 }}
@@ -96,7 +96,7 @@ export function NotionPageHeader({
                     <components.Link
                       href={link.url}
                       key={index}
-                      className={cs(styles.navLink,)}
+                      className={cs(styles.navLink, 'dark:text-neutral-200')}
                     >
                       {link.title}
                     </components.Link>
@@ -108,7 +108,7 @@ export function NotionPageHeader({
 
           <Link href="/more" className="">
             <motion.div
-              className={`px-2 h-full`}
+              className={`px-2 h-full text-black dark:text-neutral-200`}
               whileHover={{ scale: 1.2 }}
               whileTap={{ scale: 0.8 }}
               layout

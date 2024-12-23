@@ -37,6 +37,12 @@ export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter()
 
   React.useEffect(() => {
+    // Check if we should enable dark mode by default
+    const isDarkMode = window.localStorage.getItem('darkMode') === 'true'
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark')
+    }
+
     function onRouteChangeComplete() {
       if (fathomId) {
         Fathom.trackPageview()
