@@ -36,7 +36,7 @@ import { Page404 } from './Page404'
 import { PageAside } from './PageAside'
 import { PageHead } from './PageHead'
 import styles from './styles.module.css'
-import { GitHubShareButton } from './GitHubShareButton'
+// import { GitHubShareButton } from './GitHubShareButton'
 import { ActionHome } from './layout/ActionHome'
 import { removeHyphenAndJoin } from '@/lib/utils/string-utils'
 
@@ -371,7 +371,7 @@ export function NotionPage({
 
       />
 
-      <GitHubShareButton />
+      {/* <GitHubShareButton /> */}
       {config.rootNotionPageId !== removeHyphenAndJoin(pageId) && <ActionHome />}
     </>
   )
