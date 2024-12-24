@@ -29,7 +29,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
     const response = {
       follow_challenge: {
         feed_id: "92574118675283968",
-        user_id: "5670583992769432"
+        user_id: "56705839927698432"
       }
     }
 
@@ -49,7 +49,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
     feed_url: `${config.host}/feed.xml`,
     language: config.language,
     ttl: ttlMinutes,
-    description: `feedId:92574118675283968+userId:5670583992769432`
+    description: `feedId:92574118675283968+userId:56705839927698432`
   })
 
   for (const pagePath of Object.keys(siteMap.canonicalPageMap)) {
