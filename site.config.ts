@@ -4,7 +4,7 @@ export default siteConfig({
   // 网站的根 Notion 页面（必需）
   rootNotionPageId: '14f8b35ba5da80e9967cd8aacbba6729',
 
-  // aboutPageId: '14e8b35ba5da8092a4c8fba105a199f5',
+  aboutPageId: '14e8b35ba5da8092a4c8fba105a199f5',
 
   // 如果你想将页面限制在单个 Notion 工作区中（可选）
   // （这应该是一个 Notion ID；查看文档了解如何提取）
