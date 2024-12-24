@@ -1,4 +1,5 @@
 import type { GetServerSideProps } from 'next'
+import type { NextApiRequest, NextApiResponse } from 'next'
 import { type ExtendedRecordMap } from 'notion-types'
 import {
   getBlockParentPage,
@@ -14,10 +15,29 @@ import { getSocialImageUrl } from '@/lib/get-social-image-url'
 import { getCanonicalPageUrl } from '@/lib/map-page-url'
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
-  if (req.method !== 'GET') {
-    res.statusCode = 405
+  const request = req as NextApiRequest
+  const response = res as NextApiResponse
+
+  if (request.method !== 'GET') {
+    response.statusCode = 405
+    response.setHeader('Content-Type', 'application/json')
+    response.write(JSON.stringify({ error: 'method not allowed' }))
+    response.end()
+    return { props: {} }
+  }
+
+  // Handle RSS feed authentication challenge
+  const followChallenge = request.query.follow_challenge
+  if (followChallenge) {
+    const response = {
+      follow_challenge: {
+        feed_id: "92574118675283968",
+        user_id: "5670583992769432"
+      }
+    }
+
     res.setHeader('Content-Type', 'application/json')
-    res.write(JSON.stringify({ error: 'method not allowed' }))
+    res.write(JSON.stringify(response))
     res.end()
     return { props: {} }
   }
@@ -86,13 +106,13 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
 
   const feedText = feed.xml({ indent: true })
 
-  res.setHeader(
+  response.setHeader(
     'Cache-Control',
     `public, max-age=${ttlSeconds}, stale-while-revalidate=${ttlSeconds}`
   )
-  res.setHeader('Content-Type', 'text/xml; charset=utf-8')
-  res.write(feedText)
-  res.end()
+  response.setHeader('Content-Type', 'text/xml; charset=utf-8')
+  response.write(feedText)
+  response.end()
 
   return { props: {} }
 }
