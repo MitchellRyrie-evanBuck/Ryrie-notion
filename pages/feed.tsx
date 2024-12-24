@@ -15,19 +15,16 @@ import { getSocialImageUrl } from '@/lib/get-social-image-url'
 import { getCanonicalPageUrl } from '@/lib/map-page-url'
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
-  const request = req as NextApiRequest
-  const response = res as NextApiResponse
-
-  if (request.method !== 'GET') {
-    response.statusCode = 405
-    response.setHeader('Content-Type', 'application/json')
-    response.write(JSON.stringify({ error: 'method not allowed' }))
-    response.end()
+  if (req.method !== 'GET') {
+    res.statusCode = 405
+    res.setHeader('Content-Type', 'application/json')
+    res.write(JSON.stringify({ error: 'method not allowed' }))
+    res.end()
     return { props: {} }
   }
 
   // Handle RSS feed authentication challenge
-  const followChallenge = request.query.follow_challenge
+  const followChallenge = ( req as NextApiRequest).query?.follow_challenge
   if (followChallenge) {
     const response = {
       follow_challenge: {
@@ -51,7 +48,8 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
     site_url: config.host,
     feed_url: `${config.host}/feed.xml`,
     language: config.language,
-    ttl: ttlMinutes
+    ttl: ttlMinutes,
+    description: `feedId:92574118675283968+userId:5670583992769432`
   })
 
   for (const pagePath of Object.keys(siteMap.canonicalPageMap)) {
@@ -106,13 +104,13 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
 
   const feedText = feed.xml({ indent: true })
 
-  response.setHeader(
+  res.setHeader(
     'Cache-Control',
     `public, max-age=${ttlSeconds}, stale-while-revalidate=${ttlSeconds}`
   )
-  response.setHeader('Content-Type', 'text/xml; charset=utf-8')
-  response.write(feedText)
-  response.end()
+  res.setHeader('Content-Type', 'text/xml; charset=utf-8')
+  res.write(feedText)
+  res.end()
 
   return { props: {} }
 }
