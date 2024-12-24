@@ -3,7 +3,7 @@
 import React from "react";
 import { TypewriterEffect } from "@/components/ui/typewriter-effect";
 import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
-
+import { LinkPreview } from "@/components/ui/link-preview";
 import { NotionPageHeader } from '@/components/NotionPageHeader'
 
 export default function Custom() {
@@ -21,7 +21,7 @@ export default function Custom() {
       text: "with",
     },
     {
-      text: "Aceternity.",
+      text: "Xcode.",
       className: "text-blue-500 dark:text-blue-500",
     },
   ];
@@ -29,10 +29,10 @@ export default function Custom() {
   const testimonials = [
     {
       quote:
-        "The attention to detail and innovative features have completely transformed our workflow. This is exactly what we've been looking for.",
-      name: "Sarah Chen",
-      designation: "Product Manager at TechFlow",
-      src: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=3560&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "Currently working in a network security company, doing web development work for network security",
+      name: "Liu xiaowen",
+      designation: "Developer at Cyberspace",
+      src: "/ryrie.png",
     },
     {
       quote:
@@ -70,9 +70,6 @@ export default function Custom() {
       <NotionPageHeader block={null} />
       <div className="m-auto">
         <div className="flex flex-col items-center justify-center h-[40rem] ">
-          <p className="mb-10 text-base text-neutral-600 dark:text-neutral-200">
-            The road to freedom starts from here
-          </p>
           <TypewriterEffect words={words} />
           <div className="flex flex-col mt-10 space-x-0 space-y-4 md:flex-row md:space-y-0 md:space-x-4">
             <button className="w-40 h-10 text-sm text-white bg-black rounded-xl border border-transparent dark:border-white">
@@ -83,10 +80,21 @@ export default function Custom() {
             </button>
           </div>
         </div>
+        <p className="text-xl text-center text-neutral-500 dark:text-neutral-400 md:text-3xl">
+          Visit{" "}
+          <LinkPreview
+            url="https://www.ryrie.ink/"
+            className="font-bold text-transparent bg-clip-text bg-gradient-to-br from-purple-500 to-pink-500"
+          >
+            Notion UI
+          </LinkPreview>{" "}
+          and for amazing Tailwind and Framer Motion components.
+        </p>
 
         <AnimatedTestimonials testimonials={testimonials} />
+
+
       </div>
     </div>
   );
 }
-
