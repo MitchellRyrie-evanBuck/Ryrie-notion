@@ -9,9 +9,8 @@ export function ImgSite() {
   return (
     <motion.div
       className='px-2 h-full dark:text-neutral-200'
-      whileHover={{ scale: 1.2 }}
+      whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.8 }}
-      transition={{ type: "spring", stiffness: 400, damping: 10 }}
     >
       <Link href="/" className="flex justify-center items-center h-full cursor-pointer">
         <Image src={config.defaultPageIcon} alt="logo"
