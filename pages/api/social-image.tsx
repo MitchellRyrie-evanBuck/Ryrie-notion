@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable @next/next/no-img-element */
 import ky from 'ky'
 import { type NextApiRequest, type NextApiResponse } from 'next'
 import { ImageResponse } from 'next/og'
@@ -55,6 +57,7 @@ export default async function OGImage(
         }}
       >
         {pageInfo.image && (
+          // eslint-disable-next-line jsx-a11y/alt-text
           <img
             src={pageInfo.image}
             style={{
@@ -85,7 +88,8 @@ export default async function OGImage(
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'space-around',
-              backgroundColor: '#fff',
+              background: 'rgba(255, 255, 255, 0.8)',
+              backdropFilter: 'blur(30px)',
               padding: 24,
               alignItems: 'center',
               textAlign: 'center'
@@ -127,11 +131,14 @@ export default async function OGImage(
               zIndex: 5
             }}
           >
+
             <img
               src={pageInfo.authorImage}
               style={{
                 width: '100%',
-                height: '100%'
+                height: '100%',
+                borderRadius: '50%',
+                overflow: 'hidden',
               }}
             />
           </div>
