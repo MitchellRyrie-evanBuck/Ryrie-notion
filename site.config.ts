@@ -49,12 +49,12 @@ export default siteConfig({
   //   '/foo': '067dd719a912471ea9a3ac10710e7fdf',
   //   '/bar': '0be6efce9daf42688f65c76b89f8eb27'
   // }
-  pageUrlOverrides: {
-    '/about': '14e8b35ba5da8092a4c8fba105a199f5',
-    '/web3': '4e5b00cd24a44fcc891aad6d5730be8c',
-    '/record': '1508b35ba5da802cbbdadff027583840',
-    '/apple': '15a8b35ba5da8079bebccefe3f81b215'
-  },
+  // pageUrlOverrides: {
+  //   '/about': '14e8b35ba5da8092a4c8fba105a199f5',
+  //   '/web3': '4e5b00cd24a44fcc891aad6d5730be8c',
+  //   '/notes': '1508b35ba5da802cbbdadff027583840',
+  //   '/apple': '15a8b35ba5da8079bebccefe3f81b215'
+  // },
 
   // pageUrlAdditions: {
     // '/the-social-audio-revolution': 'c4deaf33cc924ad7a5b9f69c6ae04a01'
