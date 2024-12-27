@@ -42,6 +42,7 @@ export default async function OGImage(
   console.log(pageInfo)
 
   return new ImageResponse(
+    // 意思是如果一个 div 有多个子元素，必须明确设置 display: flex 或 display: none
     (
       <div
         style={{
@@ -50,7 +51,7 @@ export default async function OGImage(
           height: '100%',
           display: 'flex',
           flexDirection: 'column',
-          backgroundColor: '#1F2027',
+          backgroundColor: '#FFF',
           alignItems: 'center',
           justifyContent: 'center',
           color: 'black'
@@ -62,8 +63,10 @@ export default async function OGImage(
             src={pageInfo.image}
             style={{
               position: 'absolute',
-              width: '100%',
-              height: '100%',
+              width: '560px',
+              height: '560px',
+              right: '35px',
+              top: '35px',
               objectFit: 'cover'
             }}
           />
@@ -71,76 +74,51 @@ export default async function OGImage(
 
         <div
           style={{
-            position: 'relative',
-            width: 900,
-            height: 465,
+            position: 'absolute',
+            width: 530,
+            height: 425,
+            top: 35,
+            left: 35,
             display: 'flex',
             flexDirection: 'column',
-            border: '16px solid rgba(0,0,0,0.3)',
-            borderRadius: 8,
-            zIndex: 1
+            fontFamily: 'Inter'
           }}
         >
-          <div
-            style={{
-              width: '100%',
-              height: '100%',
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'space-around',
-              background: 'rgba(255, 255, 255, 0.8)',
-              backdropFilter: 'blur(30px)',
-              padding: 24,
-              alignItems: 'center',
-              textAlign: 'center'
-            }}
-          >
-            {pageInfo.detail && (
-              <div style={{ fontSize: 32, opacity: 0 }}>{pageInfo.detail}</div>
-            )}
-
-            <div
-              style={{
-                fontSize: 70,
-                fontWeight: 700,
-                fontFamily: 'Inter'
-              }}
-            >
+          {pageInfo.title && (
+            <div style={{ fontSize: 32, opacity: 0.6 }}>
               {pageInfo.title}
             </div>
-
-            {pageInfo.detail && (
-              <div style={{ fontSize: 32, opacity: 0.6 }}>
-                {pageInfo.detail}
-              </div>
-            )}
-          </div>
+          )}
         </div>
 
         {pageInfo.authorImage && (
           <div
             style={{
               position: 'absolute',
-              top: 47,
-              left: 104,
-              height: 128,
-              width: 128,
+              bottom: 35,
+              left: 35,
+              height: 100,
+              width: 530,
               display: 'flex',
-              borderRadius: '50%',
-              border: '4px solid #fff',
-              zIndex: 5
+              alignItems: 'center'
             }}
           >
-
             <img
               src={pageInfo.authorImage}
               style={{
-                width: '100%',
-                height: '100%',
+                width: 100,
+                height: 100,
                 borderRadius: '50%',
                 overflow: 'hidden',
               }}
             />
+            <div style={{ display: 'flex', flexDirection: 'column', marginLeft: 20 }}>
+              {pageInfo.detail && (
+                <div style={{ fontSize: 32, fontWeight: 700, fontFamily: 'Inter' }}>
+                  {pageInfo.detail}
+                </div>
+              )}
+            </div>
           </div>
         )}
       </div>
