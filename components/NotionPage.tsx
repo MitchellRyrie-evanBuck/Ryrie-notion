@@ -20,6 +20,7 @@ import {
 } from 'react-notion-x'
 import { EmbeddedTweet, TweetNotFound, TweetSkeleton } from 'react-tweet'
 import { useSearchParam } from 'react-use'
+import { removeHyphenAndJoin } from '@/lib/utils/string-utils'
 
 import type * as types from '@/lib/types'
 import * as config from '@/lib/config'
@@ -38,7 +39,6 @@ import { PageHead } from './PageHead'
 import styles from './styles.module.css'
 // import { GitHubShareButton } from './GitHubShareButton'
 import { ActionHome } from './layout/ActionHome'
-import { removeHyphenAndJoin } from '@/lib/utils/string-utils'
 
 
 // -----------------------------------------------------------------------------
@@ -259,9 +259,7 @@ export function NotionPage({
   //   parsePageId(block?.id) === parsePageId(site?.rootNotionPageId)
   const isBlogPost =
     block?.type === 'page' && block?.parent_table === 'collection'
-  const isBioPage =
-    parsePageId(block?.id) === config.rootNotionAboutPageId
-
+  const isBioPage = parsePageId(block?.id) === config.rootNotionAboutPageId
   const showTableOfContents = !!isBlogPost
   const minTableOfContentsItems = 3
 

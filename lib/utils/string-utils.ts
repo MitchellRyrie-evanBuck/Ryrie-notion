@@ -4,5 +4,8 @@
  * @returns 处理后的字符串
  */
 export function removeHyphenAndJoin(str: string): string {
-    return str.split('-').join('');
+  if (!str) {
+    return null;
+  }
+  return str.split('-').join('');
 }
