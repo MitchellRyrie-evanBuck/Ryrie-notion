@@ -45,10 +45,7 @@ export default siteConfig({
   // 这里定义的任何页面都将覆盖其默认 URL 路径
   // 示例：
   //
-  // pageUrlOverrides: {
-  //   '/foo': '067dd719a912471ea9a3ac10710e7fdf',
-  //   '/bar': '0be6efce9daf42688f65c76b89f8eb27'
-  // }
+  pageUrlOverrides: null,
   // pageUrlOverrides: {
   //   '/about': '14e8b35ba5da8092a4c8fba105a199f5',
   //   '/web3': '4e5b00cd24a44fcc891aad6d5730be8c',
@@ -65,7 +62,6 @@ export default siteConfig({
   // navigationStyle: 'default',
   navigationStyle: 'custom',
   navigationLinks: [
-
     {
       title: 'Web3',
       pageId: '4e5b00cd24a44fcc891aad6d5730be8c'
