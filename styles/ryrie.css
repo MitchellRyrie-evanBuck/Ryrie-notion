@@ -1,0 +1,447 @@
+/**
+ * ========== Core Styling ==========
+ */
+/**
+ * Make dark <-> light mode changes come in smoothly.
+ */
+* {
+  transition: background 1s;
+}
+
+/**
+ * ========== Header ==========
+ */
+.notion-header .notion-search-button {
+  max-width: 200px;
+  justify-content: start;
+}
+
+.notion-search {
+  border-radius: 6px /* prev: 3px */;
+}
+
+/**
+ * This removes a weird effect where the header bar gets smaller as you scroll.
+ */
+.notion > * {
+  padding: 0; /* from 3px 0 */
+}
+
+.notion-page-icon {
+  user-select: none /* from unset -- which leads to text hover cursor */;
+}
+
+/**
+ * Make header breadcrumb truncate more gracefully.
+ * Keep the main page breadcrumb and search icon always fully sized,
+ * but truncate with ellipsis other breadcrumbs if needed.
+ */
+.notion-header .breadcrumb {
+  justify-content: unset;
+  overflow: hidden;
+}
+.notion-header .breadcrumb span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.notion-header .breadcrumb .notion-page-icon-image {
+  flex-shrink: 0;
+}
+.notion-header .breadcrumb[href='/'] {
+  flex-shrink: 0;
+}
+.notion-header .notion-search-button {
+  flex-shrink: 0;
+}
+
+/**
+ * ========== Notion Page Header ==========
+ */
+.notion-title {
+  margin-bottom: 12px /* from 20px */;
+}
+
+/**
+ * ========== Table of Contents ==========
+ */
+.notion-aside-table-of-contents-header {
+  align-self: start;
+  text-transform: none;
+  user-select: none;
+}
+.notion-table-of-contents-item-body {
+  max-width: 250px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.notion-aside-table-of-contents .notion-table-of-contents-item {
+  line-height: 15px /* Avoid overflow-y cutting off the text */;
+}
+
+/**
+ * ========== Links ==========
+ */
+.notion-link {
+  border-bottom-width: 1px;
+}
+
+/**
+ * Minor behavior changes in link hover
+ */
+.notion-link:focus,
+.notion-link:hover {
+  background-image: linear-gradient(
+    90.68deg,
+    var(--notion-blue) 0.26%,
+    var(--notion-purple) 102.37%
+  );
+  transition-duration: 300ms;
+  transition-property: inherit;
+}
+
+/**
+ * ## Turn links with background colors into cool buttons! ##
+ *
+ * This should work whether the link is inside or outside the background color.
+ */
+.notion-link:has([class*='_background']),
+[class$='_background'] > .notion-link {
+  border-color: transparent;
+  align-items: center;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  display: inline-flex;
+  width: unset;
+}
+
+[class$='_background']:has(> .notion-link) {
+  display: inline-block;
+  /* Adds some space in case of wrapping. */
+  margin-bottom: 0.5em;
+}
+
+.notion-link:has([class*='_background']):hover,
+[class$='_background'] > .notion-link:hover {
+  border: 1px solid transparent;
+  background-image: none;
+}
+.notion-link:has([class*='_background']):hover span[class*='_background'],
+[class$='_background'] > .notion-link:hover {
+  filter: brightness(1.3);
+}
+
+.notion-link:has([class*='_background']):focus span[class*='_background'],
+[class$='_background'] > .notion-link:focus {
+  background-image: none;
+}
+
+.dark-mode
+  .notion-link:has([class*='_background']):hover
+  span[class*='_background'],
+.dark-mode [class$='_background'] > .notion-link:hover {
+  filter: brightness(0.9);
+}
+
+.notion-link:has([class*='_background']) span[class*='_background'],
+[class$='_background'] > .notion-link {
+  margin: 0;
+  padding: 0.25rem 0.55rem;
+  color: #fff;
+}
+.notion-link:has([class*='_background']) span.notion-red_background,
+span.notion-red_background > .notion-link {
+  background-color: var(--notion-red);
+}
+.notion-link:has([class*='_background']) span.notion-pink_background,
+span.notion-pink_background > .notion-link {
+  background-color: var(--notion-pink);
+}
+.notion-link:has([class*='_background']) span.notion-blue_background,
+span.notion-blue_background > .notion-link {
+  background-color: var(--notion-blue);
+}
+.notion-link:has([class*='_background']) span.notion-purple_background,
+span.notion-purple_background > .notion-link {
+  background-color: var(--notion-purple);
+}
+.notion-link:has([class*='_background']) span.notion-teal_background,
+span.notion-teal_background > .notion-link {
+  background-color: var(--notion-teal);
+}
+.notion-link:has([class*='_background']) span.notion-yellow_background,
+span.notion-yellow_background > .notion-link {
+  background-color: var(--notion-yellow);
+}
+.notion-link:has([class*='_background']) span.notion-orange_background,
+span.notion-orange_background > .notion-link {
+  background-color: var(--notion-orange);
+}
+.notion-link:has([class*='_background']) span.notion-brown_background,
+span.notion-brown_background > .notion-link {
+  background-color: var(--notion-brown);
+}
+.notion-link:has([class*='_background']) span.notion-gray_background,
+span.notion-gray_background > .notion-link {
+  background-color: var(--notion-gray);
+}
+
+/**
+ * ========= Notion Highlights =========
+ * By default, the theme in notion.css disables highlighting in dark mode.
+ * In light mode, there used to be a bit of an odd gradient.
+ * I've commented that code out in notion.css, and revised styles here.
+ */
+.dark-mode .notion-red_background,
+.dark-mode .notion-pink_background,
+.dark-mode .notion-blue_background,
+.dark-mode .notion-purple_background,
+.dark-mode .notion-teal_background,
+.dark-mode .notion-yellow_background,
+.dark-mode .notion-orange_background,
+.dark-mode .notion-brown_background,
+.dark-mode .notion-gray_background {
+  color: #fff;
+}
+
+span[class*='_background'] {
+  background-image: none;
+  border-radius: 4px;
+  padding: unset;
+  margin: unset;
+}
+.notion-red_background {
+  background-color: var(--notion-red_background);
+}
+.notion-pink_background {
+  background-color: var(--notion-pink_background);
+}
+.notion-blue_background {
+  background-color: var(--notion-blue_background);
+}
+.notion-purple_background {
+  background-color: var(--notion-purple_background);
+}
+.notion-teal_background {
+  background-color: var(--notion-teal_background);
+}
+.notion-yellow_background {
+  background-color: var(--notion-yellow_background);
+}
+.notion-orange_background {
+  background-color: var(--notion-orange_background);
+}
+.notion-brown_background {
+  background-color: var(--notion-brown_background);
+}
+.notion-gray_background {
+  background-color: var(--notion-gray_background);
+}
+
+/**
+ * ========== Notion Collections ==========
+ */
+/**
+ * Notion collection header hiding
+ * Right now, notion-react-x doesn't support respecting the collection title hiding
+ * As a workaround, we'll just hide all collection headers for now
+ */
+.notion-collection-header {
+  display: none;
+}
+
+/**
+  * By default, galleries make all the cards the same size.
+  * This makes it so that they only fill for their row instead.
+  */
+.notion-gallery-grid {
+  grid-auto-rows: unset /* prev: 1fr */;
+  border-top: none;
+}
+
+/**
+ * Smaller titles
+ */
+.notion-gallery-grid .notion-page-title-text {
+  font-size: 1.6em /* from 2em */;
+}
+/**
+ * Revise gallery grid sizes to be better for smaller mobile sizes
+ */
+.notion-gallery-grid {
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); /* from 360px */
+}
+
+/**
+ * Disable page links inside the Collection's title property
+ * if property "Disable Collection Links" is set for the page (see NotionPage.tsx)
+ * Don't disable for titles that are inline links.
+ */
+.disable-collection-links .notion-page-link {
+  pointer-events: none;
+  cursor: default;
+  text-decoration: none;
+}
+.disable-collection-links .notion-page-link .notion-page-title-text {
+  border-bottom: none;
+}
+.disable-collection-links .notion-page-link .notion-page-title-text a {
+  pointer-events: auto;
+}
+
+/**
+ * Hide default collection title icons when none is set
+ */
+.disable-collection-links
+  .notion-page-link
+  .notion-page-icon-image:has(
+    path[d='M16,1H4v28h22V11L16,1z M16,3.828L23.172,11H16V3.828z M24,27H6V3h8v10h10V27z M8,17h14v-2H8V17z M8,21h14v-2H8V21z M8,25h14v-2H8V25z']
+  ) {
+  display: none;
+}
+
+/**
+ * When we have a collection link within a collection item title, don't apply a second border bottom.
+ */
+.notion-page-title-text:has(a) {
+  border-bottom: none;
+}
+
+/**
+ * Remove the underline that's only under the title, and apply it to the whole thing instead.
+ */
+.notion-collection-row-property
+  .notion-property-relation
+  .notion-page-title-text {
+  border-bottom: none;
+}
+.notion-collection-row-property .notion-property-relation .notion-link {
+  border-bottom: 0.05em solid;
+}
+
+/**
+ * ========== Navigation ==========
+ */
+/**
+  * Hide the navigation links on mobile.
+  */
+@media screen and (max-width: 500px) {
+  .notion-nav-header-navigation-links {
+    display: none;
+  }
+}
+
+/**
+ * ========== Home Page ==========
+ */
+.index-page .notion-collection-group-title .notion-property-multi_select-item {
+  height: 1.4em;
+  padding: 10px;
+  margin-left: 5px;
+  font-weight: 600;
+  font-size: 1.18em;
+  cursor: pointer;
+  user-select: none;
+}
+.index-page .notion-hash-link,
+.notion-block-e597502d2cc241d98039291052e916fe .notion-hash-link {
+  display: none;
+}
+/**
+ * The "Articles", "Notes", and "Projects" pages are technically nested within the root website page in Notion,
+ * but we don't want them to show up in the website, since it's redundant with the top navigation.
+ */
+.index-page a[href='/articles'],
+.index-page a[href='/notes'],
+.index-page a[href='/projects'],
+.index-page a[href='/essays'] {
+  display: none;
+}
+
+/**
+ * ========== Home Page: List View ==========
+ * Some improvements for list view.
+ */
+.notion-block-e597502d2cc241d98039291052e916fe .notion-list-view {
+  max-width: 100vw;
+}
+
+@media screen and (max-width: 768px) {
+  .notion-block-e597502d2cc241d98039291052e916fe .notion-list-view {
+    min-width: 100vw;
+  }
+  .notion-block-e597502d2cc241d98039291052e916fe .notion-property-date {
+    display: none;
+  }
+}
+
+/**
+ * ========== Personal Footer ==========
+ */
+.ryrie-post-footer {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-top: 1em;
+  padding: 1.5em 0;
+  border-top: 1px solid var(--fg-color-0);
+  border-bottom: 1px solid var(--fg-color-0);
+}
+.ryrie-post-footer hr {
+  margin-bottom: 1em;
+}
+.ryrie-post-footer-left {
+  flex: 0;
+  margin-right: 1em;
+}
+.ryrie-post-footer-left img {
+  width: 64px;
+  height: 64px;
+}
+.ryrie-post-footer-content {
+  flex: 1;
+}
+.ryrie-post-footer-right {
+  flex: 0;
+  align-self: baseline;
+}
+.ryrie-post-footer-content-author {
+  font-weight: 600;
+  font-size: 1.1em;
+}
+
+/**
+ * ========== 404 Page ==========
+ */
+.error-404 {
+  text-align: center;
+}
+.error-404 .notion-link {
+  margin-top: 1em;
+}
+.dark-mode .error-404 {
+  color: var(--fg-color);
+}
+
+/**
+ * ========== Misc. Blocks ==========
+ */
+.notion-hr {
+  margin: 1.2em 0 /* from 2em 0 */;
+}
+.notion-quote {
+  font-size: 1em /* from 1.2em */;
+}
+
+/**
+ * Toggle blocks with images were going off screen
+ */
+.notion-toggle {
+  width: 100% /* from unset */;
+}
+
+/**
+ * ========== Comments ==========
+ */
+.giscus {
+  margin-top: 1em;
+}

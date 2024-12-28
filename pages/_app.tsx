@@ -8,11 +8,15 @@ import 'react-notion-x/src/styles.css'
 import 'styles/global.css'
 // this might be better for dark mode
 // import 'prismjs/themes/prism-okaidia.css'
+import 'styles/applause.css'
+
 // global style overrides for notion
 import 'styles/notion.css'
 // global style overrides for prism theme (optional)
 import 'styles/prism-theme.css'
 import 'styles/table.css'
+import 'styles/ryrie.css'
+
 
 import type { AppProps } from 'next/app'
 import * as Fathom from 'fathom-client'

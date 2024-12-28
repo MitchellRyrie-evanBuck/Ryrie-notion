@@ -4,20 +4,21 @@ import Link from 'next/link';
 
 import * as config from '@/lib/config'
 import { motion } from 'framer-motion';
+import cs from 'classnames'
+
 
 export function ImgSite() {
   return (
     <motion.div
-      className='px-2 h-full dark:text-neutral-200'
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.8 }}
+      className={cs('breadcrumbs')}
+      style={{ height: '32px', overflow: 'hidden' }}
     >
-      <Link href="/" className="flex justify-center items-center h-full cursor-pointer">
+      <Link href="/" className={cs('breadcrumb', 'button','h-full', 'flex', 'justify-center', 'items-center',  'cursor-pointer')} >
         <Image src={config.defaultPageIcon} alt="logo"
-          width={28}
-          height={28}
+          width={22}
+          height={22}
           priority={true}
-          className='w-7 h-7 rounded-3xl'
+          className='w-5.5 h-5.5 rounded-3xl'
         />
         <div className='ml-2 text-sm'>
           {config.name}

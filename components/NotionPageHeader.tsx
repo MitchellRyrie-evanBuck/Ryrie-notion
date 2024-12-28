@@ -6,6 +6,7 @@ import { motion } from 'framer-motion'
 import Link from "next/link";
 import * as React from 'react'
 import { Breadcrumbs, Header, Search, useNotionContext } from 'react-notion-x'
+import { parsePageId } from 'notion-utils'
 
 import { isSearchEnabled, navigationLinks, navigationStyle, rootNotionPageId } from '@/lib/config'
 import { useDarkMode } from '@/lib/use-dark-mode'
@@ -51,16 +52,45 @@ export function NotionPageHeader({
     return <Header block={block} />
   }
 
+  console.log('Page Info:', {
+    id: block?.id,
+    parentId: block?.parent_id,
+    parentTable: block?.parent_table,
+    spaceId: block?.space_id,
+    rootId: rootNotionPageId,
+    isRoot: block?.id === rootNotionPageId,
+    isDirectChild: block?.parent_id === rootNotionPageId,
+    comparison: {
+      currentId: parsePageId(block?.id),
+      parsedParentId: parsePageId(block?.parent_id),
+      parsedRootId: parsePageId(rootNotionPageId),
+    }
+  })
+
+  // 判断是否是根页面的直接子页面
+  const isRootPage = parsePageId(block?.id) === parsePageId(rootNotionPageId)
+  const isDirectChildOfRoot = block?.space_id === parsePageId(rootNotionPageId)
+  const shouldShowFullNav = block && !isRootPage && !isDirectChildOfRoot
+
   return (
     <motion.header
       className='notion-header dark:bg-black'
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
+      style={{ zIndex: '99000 !important' }}
     >
       <div className='notion-nav-header'>
-        {block && removeHyphenAndJoin(block.id) !== rootNotionPageId && <Breadcrumbs block={block} rootOnly={false} />}
-        {block && removeHyphenAndJoin(block.id) === rootNotionPageId && <ImgSite />}
+        {shouldShowFullNav && (
+          <div className='flex items-center'>
+            {/* <ImgSite />
+            <span className='pr-1 text-[var(--fg-color-2)] dark:text-neutral-200'>
+              /
+            </span> */}
+            <Breadcrumbs block={block} rootOnly={false} />
+          </div>
+        )}
+        {(!shouldShowFullNav && block) && <ImgSite />}
         {!block && <ImgSite />}
 
         <div className='notion-nav-header-rhs breadcrumbs'>

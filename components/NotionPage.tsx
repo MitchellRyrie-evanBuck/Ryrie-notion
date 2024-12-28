@@ -39,6 +39,8 @@ import { PageHead } from './PageHead'
 import styles from './styles.module.css'
 // import { GitHubShareButton } from './GitHubShareButton'
 import { ActionHome } from './layout/ActionHome'
+import { RyrieFooter } from './ryrie/RyrieFooter'
+
 
 
 // -----------------------------------------------------------------------------
@@ -255,8 +257,8 @@ export function NotionPage({
   const keys = Object.keys(recordMap?.block || {})
   const block = recordMap?.block?.[keys[0]]?.value
 
-  // const isRootPage =
-  //   parsePageId(block?.id) === parsePageId(site?.rootNotionPageId)
+  const isRootPage =
+    parsePageId(block?.id) === parsePageId(site?.rootNotionPageId)
   const isBlogPost =
     block?.type === 'page' && block?.parent_table === 'collection'
   const isBioPage = parsePageId(block?.id) === config.rootNotionAboutPageId
@@ -325,6 +327,17 @@ export function NotionPage({
     getPageProperty<string>('Description', block, recordMap) ||
     config.description
 
+  console.log('black', block)
+  const postFooter =
+    block?.parent_table === 'collection' ? (
+      <RyrieFooter />
+    ) : undefined
+  console.log('postFooter', postFooter)
+
+  // const postComments = config.isCommentsEnabled ? (
+  //   <Comments frontMatter={frontMatter} />
+  // ) : null
+
   return (
     <>
       <PageHead
@@ -363,8 +376,14 @@ export function NotionPage({
         mapImageUrl={mapImageUrl}
         searchNotion={config.isSearchEnabled ? searchNotion : null}
         pageAside={pageAside}
+        pageFooter={
+          <>
+            {postFooter}
+            {/* {postComments} */}
+          </>
+        }
         footer={footer}
-        pageTitle={tagsPage && propertyToFilterName ? title : undefined}
+        // pageTitle={tagsPage && propertyToFilterName ? title : undefined}
         pageCover={pageCover}
 
       />
