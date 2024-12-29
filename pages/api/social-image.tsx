@@ -81,11 +81,27 @@ export default async function OGImage(
             left: 35,
             display: 'flex',
             flexDirection: 'column',
-            fontFamily: 'Inter'
+            fontFamily: '-apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol',
+            textAlign: 'center',
+            justifyContent: 'center',
+            alignItems: 'center',
+            fontWeight: 700,
           }}
         >
           {pageInfo.title && (
-            <div style={{ fontSize: 32, opacity: 0.6 }}>
+            <div style={{
+              fontSize: 36,
+              opacity: 1,
+              background: 'linear-gradient(135deg, #FF0080 0%, #7928CA 50%, #577DF3 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              color: 'transparent',
+              width: '100%',
+              maxWidth: '480px',
+              margin: '0 auto',
+              padding: '0 20px'
+            }}>
               {pageInfo.title}
             </div>
           )}
