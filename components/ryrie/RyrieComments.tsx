@@ -13,7 +13,7 @@ export const RyrieComments: React.FC = () => {
   React.useEffect(() => {
     const giscusScript = document.createElement('script')
     giscusScript.src = 'https://giscus.app/client.js'
-    giscusScript.dataset.repo = 'ryrie/me'
+    giscusScript.dataset.repo = 'www.ryrie.ink'
     giscusScript.dataset.repoId = 'R_kgDOId_ODg'
     giscusScript.dataset.category = 'Posts'
     giscusScript.dataset.categoryId = 'DIC_kwDOId_ODs4CUre0'
