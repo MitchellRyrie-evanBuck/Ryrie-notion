@@ -8,6 +8,9 @@ import {
   idToUuid
 } from 'notion-utils'
 import RSS from 'rss'
+import { NotionAPI } from 'notion-client'
+import { renderToString } from 'react-dom/server'
+import { NotionRenderer } from 'react-notion-x'
 
 import * as config from '@/lib/config'
 import { getSiteMap } from '@/lib/get-site-map'
@@ -17,9 +20,8 @@ import { getCanonicalPageUrl } from '@/lib/map-page-url'
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   if (req.method !== 'GET') {
     res.statusCode = 405
-    res.setHeader('Content-Type', 'application/json')
-    res.write(JSON.stringify({ error: 'method not allowed' }))
-    res.end()
+    res.setHeader('Content-Type', 'text/plain')
+    res.end('Method Not Allowed')
     return { props: {} }
   }
 
@@ -40,13 +42,13 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   }
 
   const siteMap = await getSiteMap()
-  const ttlMinutes = 24 * 60 // 24 hours
+  const ttlMinutes = 180
   const ttlSeconds = ttlMinutes * 60
 
   const feed = new RSS({
     title: config.name,
     site_url: config.host,
-    feed_url: `https://${config.host}/feed`,
+    feed_url: `https://${config.host}/feed.xml`,
     language: config.language,
     ttl: ttlMinutes,
     description: `feedId:92574118675283968+userId:56705839927698432`
@@ -88,11 +90,24 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
         : undefined
     const socialImageUrl = getSocialImageUrl(pageId)
 
+    // 使用 NotionRenderer 渲染页面内容
+    const pageContent = renderToString(
+      <NotionRenderer
+        recordMap={recordMap}
+        fullPage={false}
+        darkMode={false}
+        disableHeader={true}
+      />
+    )
+
     feed.item({
       title,
       url,
       date,
       description,
+      custom_elements: [
+        { 'content:encoded': { _cdata: pageContent } }
+      ],
       enclosure: socialImageUrl
         ? {
             url: socialImageUrl,
