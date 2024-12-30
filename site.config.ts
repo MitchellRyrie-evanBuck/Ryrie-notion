@@ -17,7 +17,7 @@ export default siteConfig({
   author: 'Mitchell Ryrie',
 
   // open graph 元数据（可选）
-  description: 'Example Next.js Notion Starter Kit Site',
+  description: 'Produce the best article output',
 
   // 社交媒体用户名（可选）
   twitter: 'liuxiao_wen',
