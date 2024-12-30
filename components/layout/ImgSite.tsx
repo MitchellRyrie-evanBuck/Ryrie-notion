@@ -20,7 +20,11 @@ export function ImgSite() {
           priority={true}
           className='w-5.5 h-5.5 rounded-3xl'
         />
-        <div className='ml-2 text-sm'>
+        <div className='ml-2 text-sm'
+          style={{
+            fontFamily: 'logoBrush',
+          }}
+        >
           {config.name}
         </div>
       </Link>

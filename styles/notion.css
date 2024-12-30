@@ -21,21 +21,12 @@
   line-height: 1.65;
 }
 
-.index-page,
-.tags-page {
+.index-page {
+  --notion-max-width: 900px;
+}
+
+.other-page {
   --notion-max-width: 720px;
-}
-
-.tags-page .notion-collection-header {
-  display: none;
-}
-
-.tags-page .notion-gallery {
-  padding-top: 2em;
-}
-
-.tags-page .notion-gallery-grid {
-  padding-top: 4em;
 }
 
 .notion-text {
@@ -59,6 +50,7 @@
 .notion-header .notion-nav-header {
   max-width: 1100px;
   margin: 0 auto;
+  overflow-x: auto;
 }
 
 .notion-nav-header-rhs {
@@ -167,11 +159,12 @@
   }
 }
 
-@media only screen and (max-width: 600px) {
+/* @wustep: show search always */
+/* @media only screen and (max-width: 600px) {
   .notion-search-button {
     display: none !important;
   }
-}
+} */
 
 .notion .notion-page-icon-cover {
   margin-left: auto;
@@ -187,11 +180,16 @@
   padding-bottom: 1em;
 }
 
-.notion-collection-page-properties .notion-collection-column-title {
+/* @wustep: added .notion-page:not(.enable-page-property-names) to allow manual enabling property names */
+.notion-page:not(.enable-page-property-names)
+  .notion-collection-page-properties
+  .notion-collection-column-title {
   display: none;
 }
 
-.notion-collection-row-property .notion-property {
+.notion-page:not(.enable-page-property-names)
+  .notion-collection-row-property
+  .notion-property {
   display: flex;
   justify-content: center;
 }
@@ -214,20 +212,17 @@
   box-shadow: 2px 2px 8px 4px rgba(15, 15, 15, 0.1);
 }
 
-.notion-page-cover-hero {
-  cursor: grab;
-}
-
-.notion-page-cover-hero:active {
-  cursor: grabbing;
-}
-
 @media only screen and (max-width: 1200px) {
   .notion-page-cover-wrapper,
   .notion-page-cover-wrapper span,
   .notion-page-cover-wrapper img {
     border-radius: 0;
   }
+}
+
+.notion-block-ab9a258d6cf444f3bb40dc2600feae91 .notion-page-link {
+  justify-content: center;
+  padding: 2em;
 }
 
 .notion-code {
@@ -346,8 +341,27 @@
   );
 }
 
+/* @wustep: dark mode tags */
+.dark-mode {
+  --notion-item-blue: var(--notion-blue_background);
+  --notion-item-orange: var(--notion-orange_background);
+  --notion-item-green: var(--notion-teal_background);
+  --notion-item-pink: var(--notion-pink_background);
+  --notion-item-brown: var(--notion-brown_background);
+  --notion-item-red: var(--notion-red_background);
+  --notion-item-yellow: var(--notion-yellow_background);
+  --notion-item-default: var(--notion-gray_background);
+  --notion-item-purple: var(--notion-purple_background);
+  --notion-item-gray: var(--notion-gray_background);
+}
+.dark-mode .notion-property-multi_select-item,
+.dark-mode .notion-property-select-item {
+  color: var(--notion-fg-color);
+}
+
 /* disable highlighting in dark mode */
-.dark-mode .notion-red_background,
+/* @wustep: re-enabled highlighting, but revise colors in wustep.css */
+/* .dark-mode .notion-red_background,
 .dark-mode .notion-pink_background,
 .dark-mode .notion-blue_background,
 .dark-mode .notion-purple_background,
@@ -360,20 +374,12 @@
   margin: 0;
   border-radius: 0;
   background: none !important;
-}
-
-.notion-row {
-  overflow: unset;
-}
-
-.notion-block-f382a57807bc40779860eb079d0144f2 span {
-  overflow: visible !important;
-}
+} */
 
 /* if you don't want rounded page icon images, remove this */
 .notion-page-icon-hero.notion-page-icon-image {
   border-radius: 50%;
-  box-shadow: 4px 4px 24px 0 rgb(0 0 0 / 21%);
+  box-shadow: 0 8px 40px 0 rgb(0 0 0 / 21%);
 }
 .notion-page-icon-hero.notion-page-icon-image span,
 .notion-page-icon-hero.notion-page-icon-image img {
@@ -403,6 +409,14 @@
   border-image-slice: 1;
 }
 
+.notion-block-ab9a258d6cf444f3bb40dc2600feae91 .notion-column {
+  padding: 0;
+}
+
+.notion-block-260baa77f1e1428b97fb14ac99c7c385 {
+  display: none;
+}
+
 .notion-search .searchBar {
   box-shadow: var(--fg-color-0) 0px 1px 0px;
 }
@@ -418,5 +432,3 @@
 .notion-equation.notion-equation-block {
   align-items: center;
 }
-
-

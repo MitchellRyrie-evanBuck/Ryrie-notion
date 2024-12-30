@@ -355,8 +355,9 @@ export function NotionPage({
       <NotionRenderer
         bodyClassName={cs(
           styles.notion,
-           'index-page',
-          tagsPage && 'tags-page'
+          'index-page',
+          isRootPage ? 'root-page' : 'other-page',
+          // tagsPage && 'tags-page'
         )}
         darkMode={isDarkMode}
         components={components}
@@ -383,7 +384,7 @@ export function NotionPage({
           </>
         }
         footer={footer}
-        // pageTitle={tagsPage && propertyToFilterName ? title : undefined}
+        pageTitle={tagsPage && propertyToFilterName ? title : undefined}
         pageCover={pageCover}
 
       />
