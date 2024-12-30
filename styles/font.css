@@ -1,0 +1,11 @@
+@font-face {
+  font-family: 'AlexBrush';
+  src: url('/fonts/PlaywriteUSTrad-VariableFont_wght.ttf') format('truetype');
+  /* 添加其他样式属性，例如 font-weight, font-style 等 */
+}
+
+@font-face {
+  font-family: 'logoBrush';
+  src: url('/fonts/Reey-Regular.otf') format('truetype');
+  /* 添加其他样式属性，例如 font-weight, font-style 等 */
+}
