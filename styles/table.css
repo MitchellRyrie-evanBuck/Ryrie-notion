@@ -1,5 +1,5 @@
 .notion-table{
-  --notion-max-width: 900px;
+  --notion-max-width: 720px;
   max-width: var(--notion-max-width) !important;
   display: flex;
 }
