@@ -23,7 +23,7 @@
 
 .index-page,
 .tags-page {
-  --notion-max-width: 900px;
+  --notion-max-width: 720px;
 }
 
 .tags-page .notion-collection-header {
