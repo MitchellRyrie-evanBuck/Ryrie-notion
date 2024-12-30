@@ -46,7 +46,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   const feed = new RSS({
     title: config.name,
     site_url: config.host,
-    feed_url: `${config.host}/feed.xml`,
+    feed_url: `https://${config.host}/feed`,
     language: config.language,
     ttl: ttlMinutes,
     description: `feedId:92574118675283968+userId:56705839927698432`
