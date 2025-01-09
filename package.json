@@ -34,9 +34,12 @@
     "@keyvhq/core": "^1.6.26",
     "@keyvhq/redis": "^1.6.28",
     "@radix-ui/react-hover-card": "^1.1.4",
+    "@radix-ui/react-label": "^2.1.1",
+    "@radix-ui/react-slot": "^1.1.1",
     "@react-icons/all-files": "^4.1.0",
     "@tabler/icons-react": "^3.26.0",
     "@types/react-syntax-highlighter": "^15.5.13",
+    "class-variance-authority": "^0.7.1",
     "classnames": "^2.5.1",
     "clsx": "^2.1.1",
     "expiry-map": "^2.0.0",
@@ -46,8 +49,10 @@
     "lodash.omit": "^4.5.0",
     "lottie-react": "^2.4.0",
     "lqip-modern": "^2.2.1",
+    "lucide-react": "^0.469.0",
     "motion": "^11.15.0",
     "next": "^15.1.0",
+    "next-auth": "5.0.0-beta.25",
     "notion-client": "^7.1.5",
     "notion-types": "^7.1.5",
     "notion-utils": "^7.1.5",
@@ -68,7 +73,8 @@
     "react-tweet": "^3.2.1",
     "react-use": "^17.6.0",
     "rss": "^1.2.2",
-    "tailwind-merge": "^2.5.5"
+    "tailwind-merge": "^2.5.5",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@fisch0920/eslint-config": "^1.4.0",
@@ -93,5 +99,6 @@
     "cacheable-request": {
       "keyv": "npm:@keyvhq/core@~1.6.6"
     }
-  }
+  },
+  "packageManager": "pnpm@9.14.4+sha512.c8180b3fbe4e4bca02c94234717896b5529740a6cbadf19fa78254270403ea2f27d4e1d46a08a0f56c89b63dc8ebfd3ee53326da720273794e6200fcf0d184ab"
 }

@@ -80,7 +80,7 @@ export class HeroHeader extends Component<{
         maxSplatRadius * scale
       )
 
-      const splats = []
+      const splats: any = []
       for (let i = 0; i < numSplatsPerEpoch; ++i) {
         const color = [random.float(10), random.float(10), random.float(10)]
 
