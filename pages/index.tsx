@@ -1,6 +1,7 @@
 import { NotionPage } from '@/components/NotionPage'
 import { domain } from '@/lib/config'
 import { resolveNotionPage } from '@/lib/resolve-notion-page'
+import { useSession } from 'next-auth/react'
 
 export const getStaticProps = async () => {
   try {
@@ -17,5 +18,7 @@ export const getStaticProps = async () => {
 }
 
 export default function NotionDomainPage(props) {
+  const { data: session } = useSession()
+
   return <NotionPage {...props} />
 }

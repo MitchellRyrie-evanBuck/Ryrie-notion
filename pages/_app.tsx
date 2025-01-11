@@ -17,12 +17,12 @@ import 'styles/prism-theme.css'
 import 'styles/table.css'
 import 'styles/ryrie.css'
 
-
 import type { AppProps } from 'next/app'
 import * as Fathom from 'fathom-client'
 import { useRouter } from 'next/router'
 import posthog from 'posthog-js'
 import * as React from 'react'
+import { SessionProvider } from "next-auth/react"
 
 import { bootstrap } from '@/lib/bootstrap-client'
 import {
@@ -37,7 +37,10 @@ if (!isServer) {
   bootstrap()
 }
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({
+  Component,
+  pageProps: { session, ...pageProps }
+}: AppProps) {
   const router = useRouter()
 
   React.useEffect(() => {
@@ -72,5 +75,9 @@ export default function App({ Component, pageProps }: AppProps) {
     }
   }, [router.events])
 
-  return <Component {...pageProps} />
+  return (
+    <SessionProvider session={session}>
+      <Component {...pageProps} />
+    </SessionProvider>
+  )
 }
