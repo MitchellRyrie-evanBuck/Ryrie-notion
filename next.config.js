@@ -39,6 +39,14 @@ export default withBundleAnalyzer({
       dirname,
       'node_modules/react-dom'
     )
+
+    // Configure filesystem cache
+    config.cache = {
+      type: 'filesystem',
+      buildDependencies: {
+        config: [fileURLToPath(import.meta.url)]
+      }
+    }
     return config
   },
 

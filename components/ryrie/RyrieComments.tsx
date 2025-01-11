@@ -10,6 +10,7 @@ import { useDarkMode } from '@/lib/use-dark-mode'
 export const RyrieComments: React.FC = () => {
   const { isDarkMode } = useDarkMode()
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   React.useEffect(() => {
     const giscusScript = document.createElement('script')
     giscusScript.src = 'https://giscus.app/client.js'
