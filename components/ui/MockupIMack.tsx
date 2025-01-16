@@ -25,7 +25,7 @@ export  function MockupIMack({
             height={627}
             className="absolute w-full h-auto"
           />
-          {/* video or photo. */}
+          {/* video or photo.. */}
           <div></div>
         </div>
         <Image
