@@ -22,6 +22,8 @@ export default withBundleAnalyzer({
       { protocol: 'https', hostname: 'ryrie.ink' },
       { protocol: 'https', hostname: 'prod-files-secure.s3.us-west-2.amazonaws.com' },
       { protocol: 'https', hostname: 'api.microlink.io' },
+      { protocol: 'https', hostname: 'lh3.googleusercontent.com' },
+      { protocol: 'https', hostname: 'avatars.githubusercontent.com' },
     ],
     formats: ['image/avif', 'image/webp'],
     dangerouslyAllowSVG: true,
