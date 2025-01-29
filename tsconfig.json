@@ -34,11 +34,11 @@
         "styles/*"
       ]
     },
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ]
+    // "plugins": [
+    //   {
+    //     "name": "next"
+    //   }
+    // ]
   },
   "exclude": [
     "node_modules"
