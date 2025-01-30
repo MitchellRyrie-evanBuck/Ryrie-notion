@@ -4,6 +4,14 @@
   "buildCommand": "pnpm run build",
   "devCommand": "pnpm run dev",
   "installCommand": "pnpm install",
+  "functions": {
+    "api/*.js": {
+      "maxDuration": 60
+    },
+    "pages/**/*.js": {
+      "maxDuration": 60
+    }
+  },
   "env": {
     "NOTION_API_KEY": "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",
     "NOTION_ACTIVE_USER": "e88c84b3a19145b0a342d3d9f2527f77"
