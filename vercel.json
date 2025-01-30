@@ -5,10 +5,7 @@
   "devCommand": "pnpm run dev",
   "installCommand": "pnpm install",
   "functions": {
-    "api/*.js": {
-      "maxDuration": 60
-    },
-    "pages/**/*.js": {
+    "pages/**/*": {
       "maxDuration": 60
     }
   },
