@@ -7,7 +7,6 @@ const withBundleAnalyzer = bundleAnalyzer({
 })
 
 export default withBundleAnalyzer({
-  // staticPageGenerationTimeout: 300,
   images: {
     remotePatterns: [
       { protocol: 'https', hostname: 'www.notion.so' },
