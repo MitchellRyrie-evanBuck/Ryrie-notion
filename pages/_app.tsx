@@ -4,6 +4,8 @@ import 'katex/dist/katex.min.css'
 import 'prismjs/themes/prism-coy.css'
 // core styles shared by all of react-notion-x (required)
 import 'react-notion-x/src/styles.css'
+// PDF viewer styles
+import 'react-pdf/dist/esm/Page/AnnotationLayer.css'
 // global styles shared across the entire site
 import 'styles/global.css'
 // this might be better for dark mode
@@ -14,6 +16,7 @@ import 'styles/font.css'
 import 'styles/notion.css'
 // global style overrides for prism theme (optional)
 import 'styles/prism-theme.css'
+import 'prismjs/themes/prism-tomorrow.css'
 import 'styles/table.css'
 import 'styles/ryrie.css'
 
