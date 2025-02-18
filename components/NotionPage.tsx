@@ -81,7 +81,8 @@ const Code = dynamic(() =>
       import('prismjs/components/prism-stylus.js'),
       import('prismjs/components/prism-swift.js'),
       import('prismjs/components/prism-wasm.js'),
-      import('prismjs/components/prism-yaml.js')
+      import('prismjs/components/prism-yaml.js'),
+      import('prismjs/components/prism-glsl.js')
     ])
     return m.Code
   })
@@ -117,15 +118,15 @@ const Collection = dynamic(() =>
   )
 )
 
-// const Equation = dynamic(() =>
-//   import('react-notion-x/build/third-party/equation').then((m) => m.Equation)
-// )
-// const Pdf = dynamic(
-//   () => import('react-notion-x/build/third-party/pdf').then((m) => m.Pdf),
-//   {
-//     ssr: false
-//   }
-// )
+const Equation = dynamic(() =>
+  import('react-notion-x/build/third-party/equation').then((m) => m.Equation)
+)
+const Pdf = dynamic(
+  () => import('react-notion-x/build/third-party/pdf').then((m) => m.Pdf),
+  {
+    ssr: false
+  }
+)
 const Modal = dynamic(
   () =>
     import('react-notion-x/build/third-party/modal').then((m) => {
@@ -228,8 +229,8 @@ export function NotionPage({
       nextLink: Link,
       Code,
       Collection,
-      // Equation,
-      // Pdf,
+      Equation,
+      Pdf,
       Modal,
       Tweet,
       Header: NotionPageHeader,
