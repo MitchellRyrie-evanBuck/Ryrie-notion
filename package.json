@@ -7,7 +7,8 @@
   "repository": "MitchellRyrie-evanBuck/Ryrie-notion",
   "license": "MIT",
   "engines": {
-    "node": ">=18"
+    "node": ">=18",
+    "pnpm": ">=9.14.4"
   },
   "type": "module",
   "scripts": {
@@ -15,6 +16,8 @@
     "build": "next build",
     "start": "next start",
     "deploy": "vercel deploy",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
     "deps:upgrade": "[ -z $GITHUB_ACTIONS ] && pnpm up -L notion-client notion-types notion-utils react-notion-x || echo 'Skipping deps:update on CI'",
     "deps:link": "[ -z $GITHUB_ACTIONS ] && run-s deps:link:* || echo 'Skipping deps:update on CI'",
     "deps:unlink": "[ -z $GITHUB_ACTIONS ] && pnpm add notion-client notion-types notion-utils react-notion-x || echo 'Skipping deps:update on CI'",
