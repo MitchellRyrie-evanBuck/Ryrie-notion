@@ -7,7 +7,8 @@
   "repository": "MitchellRyrie-evanBuck/Ryrie-notion",
   "license": "MIT",
   "engines": {
-    "node": ">=18"
+    "node": ">=18",
+    "pnpm": ">=9.12.2"
   },
   "type": "module",
   "scripts": {
@@ -15,6 +16,8 @@
     "build": "next build",
     "start": "next start",
     "deploy": "vercel deploy",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
     "deps:upgrade": "[ -z $GITHUB_ACTIONS ] && pnpm up -L notion-client notion-types notion-utils react-notion-x || echo 'Skipping deps:update on CI'",
     "deps:link": "[ -z $GITHUB_ACTIONS ] && run-s deps:link:* || echo 'Skipping deps:update on CI'",
     "deps:unlink": "[ -z $GITHUB_ACTIONS ] && pnpm add notion-client notion-types notion-utils react-notion-x || echo 'Skipping deps:update on CI'",
@@ -27,7 +30,8 @@
     "analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build",
     "test": "run-p test:*",
     "test:lint": "eslint .",
-    "test:prettier": "prettier '**/*.{js,jsx,ts,tsx}' --check"
+    "test:prettier": "prettier '**/*.{js,jsx,ts,tsx}' --check",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@fisch0920/use-dark-mode": "^2.4.0",
@@ -37,6 +41,7 @@
     "@radix-ui/react-label": "^2.1.1",
     "@radix-ui/react-slot": "^1.1.1",
     "@react-icons/all-files": "^4.1.0",
+    "@sentry/nextjs": "9.1.0",
     "@tabler/icons-react": "^3.26.0",
     "@types/react-syntax-highlighter": "^15.5.13",
     "class-variance-authority": "^0.7.1",
@@ -79,6 +84,8 @@
     "zod": "^3.24.1"
   },
   "devDependencies": {
+    "@commitlint/cli": "19.7.1",
+    "@commitlint/config-conventional": "19.7.1",
     "@fisch0920/eslint-config": "^1.4.0",
     "@next/bundle-analyzer": "^15.1.0",
     "@types/lodash.omit": "^4.5.9",
@@ -91,11 +98,22 @@
     "cross-env": "^7.0.3",
     "eslint": "^8.57.1",
     "eslint-config-next": "^15.1.0",
+    "husky": "9.1.7",
+    "lint-staged": "15.4.3",
     "npm-run-all2": "^7.0.1",
     "postcss": "^8.4.49",
     "prettier": "^3.4.2",
     "tailwindcss": "^3.4.16",
     "typescript": "^5.7.2"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
+    ]
   },
   "overrides": {
     "cacheable-request": {

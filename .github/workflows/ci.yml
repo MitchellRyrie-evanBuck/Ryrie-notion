@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: '9.12.2'
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: |
+          echo "Node version: $(node -v)"
+          echo "PNPM version: $(pnpm -v)"
+          pnpm install --no-frozen-lockfile
+
+      - name: List installed packages
+        run: pnpm list
+
+      - name: Check TypeScript
+        run: |
+          echo "Checking TypeScript..."
+          pnpm typecheck || true
+
+      - name: Build
+        run: |
+          echo "Starting build..."
+          pnpm build
+        env:
+          CI: true
+          NEXT_TELEMETRY_DISABLED: 1
