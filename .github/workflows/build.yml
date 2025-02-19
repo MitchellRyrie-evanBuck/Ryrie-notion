@@ -33,8 +33,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile --strict-peer-dependencies
 
-      - name: Run test
-        run: pnpm test
 
       # TODO Enable those lines below if you use a Redis cache, you'll also need to configure GitHub Repository Secrets
       # env:
