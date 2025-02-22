@@ -7,7 +7,7 @@
   "repository": "MitchellRyrie-evanBuck/Ryrie-notion",
   "license": "MIT",
   "engines": {
-    "node": ">=18",
+    "node": ">=20",
     "pnpm": ">=9.12.2"
   },
   "type": "module",
