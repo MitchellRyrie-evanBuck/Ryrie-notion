@@ -7,7 +7,7 @@
   "repository": "MitchellRyrie-evanBuck/Ryrie-notion",
   "license": "MIT",
   "engines": {
-    "node": ">=18",
+    "node": ">=20",
     "pnpm": ">=9.12.2"
   },
   "type": "module",
@@ -49,7 +49,7 @@
     "clsx": "^2.1.1",
     "expiry-map": "^2.0.0",
     "fathom-client": "^3.7.2",
-    "framer-motion": "^11.15.0",
+    "framer-motion": "11.18.2",
     "ky": "^1.7.3",
     "lodash.omit": "^4.5.0",
     "lottie-react": "^2.4.0",
