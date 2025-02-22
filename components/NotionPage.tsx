@@ -40,8 +40,8 @@ import styles from './styles.module.css'
 // import { GitHubShareButton } from './GitHubShareButton'
 import { ActionHome } from './layout/ActionHome'
 import { RyrieFooter } from './ryrie/RyrieFooter'
-
-
+import { motion, AnimatePresence } from 'framer-motion'
+import { AnimatedCard } from './AnimatedCard'
 
 // -----------------------------------------------------------------------------
 // dynamic imports for optional components
@@ -212,6 +212,28 @@ const HeroHeader = dynamic<{ className?: string }>(
   { ssr: false }
 )
 
+const pageTransitionVariants = {
+  initial: {
+    opacity: 0,
+    y: 20
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.6, -0.05, 0.01, 0.99]
+    }
+  },
+  exit: {
+    opacity: 0,
+    y: -20,
+    transition: {
+      duration: 0.4
+    }
+  }
+}
+
 export function NotionPage({
   site,
   recordMap,
@@ -340,7 +362,12 @@ export function NotionPage({
   // ) : null
 
   return (
-    <>
+    <motion.div
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      variants={pageTransitionVariants}
+    >
       <PageHead
         pageId={pageId}
         site={site}
@@ -353,45 +380,46 @@ export function NotionPage({
       {isLiteMode && <BodyClassName className='notion-lite' />}
       {isDarkMode && <BodyClassName className='dark-mode' />}
 
-      <NotionRenderer
-        bodyClassName={cs(
-          styles.notion,
-          'index-page',
-          isRootPage ? 'root-page' : 'other-page',
-          // tagsPage && 'tags-page'
-        )}
-        darkMode={isDarkMode}
-        components={components}
-        recordMap={recordMap}
-        rootPageId={site.rootNotionPageId}
-        rootDomain={site.domain}
-        fullPage={!isLiteMode}
-        previewImages={!!recordMap.preview_images}
-        showCollectionViewDropdown={false}
-        showTableOfContents={showTableOfContents}
-        minTableOfContentsItems={minTableOfContentsItems}
-        defaultPageIcon={config.defaultPageIcon}
-        defaultPageCover={config.defaultPageCover}
-        defaultPageCoverPosition={config.defaultPageCoverPosition}
-        linkTableTitleProperties={false}
-        mapPageUrl={siteMapPageUrl}
-        mapImageUrl={mapImageUrl}
-        searchNotion={config.isSearchEnabled ? searchNotion : null}
-        pageAside={pageAside}
-        pageFooter={
-          <>
-            {postFooter}
-            {/* {postComments} */}
-          </>
-        }
-        footer={footer}
-        pageTitle={tagsPage && propertyToFilterName ? title : undefined}
-        pageCover={pageCover}
+      <div className={cs('notion', styles.notion)}>
+        <NotionRenderer
+          bodyClassName={cs(
+            styles.notion,
+            'index-page',
+            isRootPage ? 'root-page' : 'other-page',
+            // tagsPage && 'tags-page'
+          )}
+          darkMode={isDarkMode}
+          components={components}
+          recordMap={recordMap}
+          rootPageId={site.rootNotionPageId}
+          rootDomain={site.domain}
+          fullPage={!isLiteMode}
+          previewImages={!!recordMap.preview_images}
+          showCollectionViewDropdown={false}
+          showTableOfContents={showTableOfContents}
+          minTableOfContentsItems={minTableOfContentsItems}
+          defaultPageIcon={config.defaultPageIcon}
+          defaultPageCover={config.defaultPageCover}
+          defaultPageCoverPosition={config.defaultPageCoverPosition}
+          linkTableTitleProperties={false}
+          mapPageUrl={siteMapPageUrl}
+          mapImageUrl={mapImageUrl}
+          searchNotion={config.isSearchEnabled ? searchNotion : null}
+          pageAside={pageAside}
+          pageFooter={
+            <>
+              {postFooter}
+              {/* {postComments} */}
+            </>
+          }
+          footer={footer}
+          pageTitle={tagsPage && propertyToFilterName ? title : undefined}
+          pageCover={pageCover}
 
-      />
-
+        />
+      </div>
       {/* <GitHubShareButton /> */}
       {config.rootNotionPageId !== removeHyphenAndJoin(pageId) && <ActionHome />}
-    </>
+    </motion.div>
   )
 }
