@@ -35,6 +35,7 @@
   },
   "dependencies": {
     "@fisch0920/use-dark-mode": "^2.4.0",
+    "@giscus/react": "3.1.0",
     "@keyvhq/core": "^1.6.26",
     "@keyvhq/redis": "^1.6.28",
     "@radix-ui/react-hover-card": "^1.1.4",
@@ -47,6 +48,7 @@
     "class-variance-authority": "^0.7.1",
     "classnames": "^2.5.1",
     "clsx": "^2.1.1",
+    "colorthief": "2.6.0",
     "expiry-map": "^2.0.0",
     "fathom-client": "^3.7.2",
     "framer-motion": "11.18.2",

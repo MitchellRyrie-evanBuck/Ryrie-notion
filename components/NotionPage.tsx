@@ -42,7 +42,12 @@ import { ActionHome } from './layout/ActionHome'
 import { RyrieFooter } from './ryrie/RyrieFooter'
 import { motion, AnimatePresence } from 'framer-motion'
 import { AnimatedCard } from './AnimatedCard'
+import { DynamicBackground } from './DynamicBackground'
 
+const Comment = dynamic(
+  () => import('@/components/Comment'),
+  { ssr: false }
+);
 // -----------------------------------------------------------------------------
 // dynamic imports for optional components
 // -----------------------------------------------------------------------------
@@ -368,6 +373,7 @@ export function NotionPage({
       exit="exit"
       variants={pageTransitionVariants}
     >
+      <DynamicBackground coverImage={mapImageUrl(block?.format?.page_cover || '', block)} />
       <PageHead
         pageId={pageId}
         site={site}
@@ -408,8 +414,8 @@ export function NotionPage({
           pageAside={pageAside}
           pageFooter={
             <>
+              {block?.parent_table === 'collection' && <Comment />}
               {postFooter}
-              {/* {postComments} */}
             </>
           }
           footer={footer}
