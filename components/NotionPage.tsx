@@ -43,6 +43,10 @@ import { RyrieFooter } from './ryrie/RyrieFooter'
 import { motion, AnimatePresence } from 'framer-motion'
 import { AnimatedCard } from './AnimatedCard'
 
+const Comment = dynamic(
+  () => import('@/components/Comment'),
+  { ssr: false }
+);
 // -----------------------------------------------------------------------------
 // dynamic imports for optional components
 // -----------------------------------------------------------------------------
@@ -408,8 +412,8 @@ export function NotionPage({
           pageAside={pageAside}
           pageFooter={
             <>
+              <Comment />
               {postFooter}
-              {/* {postComments} */}
             </>
           }
           footer={footer}
