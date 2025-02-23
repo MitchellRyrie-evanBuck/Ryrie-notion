@@ -78,7 +78,6 @@ export function NotionPageHeader({
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      style={{ zIndex: '99000 !important' }}
     >
       <div className='notion-nav-header'>
         {shouldShowFullNav && (
