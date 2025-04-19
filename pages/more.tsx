@@ -400,7 +400,6 @@ export default function MorePage({ site, recordMap, error, pageId }) {
           )}
         </div>
 
-        <RyrieFooter />
       </div>
     </motion.div>
   );
