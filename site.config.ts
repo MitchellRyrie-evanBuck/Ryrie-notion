@@ -20,7 +20,7 @@ export default siteConfig({
   description: 'Produce the best article output',
 
   // 社交媒体用户名（可选）
-  twitter: 'liuxiao_wen',
+  twitter: 'RyrieLc',
   github: 'MitchellRyrie-evanBuck',
   linkedin: 'liuxiao_wen',
   // mastodon: '#', // 可选的 mastodon 个人资料 URL，提供链接验证
