@@ -60,6 +60,7 @@
     "lottie-react": "^2.4.1",
     "lqip-modern": "^2.2.1",
     "lucide-react": "^0.469.0",
+    "mem": "10.0.0",
     "motion": "^11.18.2",
     "next": "^15.3.5",
     "next-auth": "5.0.0-beta.25",
