@@ -29,6 +29,14 @@ const nextConfig = {
       { protocol: 'https', hostname: 'lh3.googleusercontent.com' },
       { protocol: 'https', hostname: 'avatars.githubusercontent.com' },
       { protocol: 'https', hostname: 'picsum.photos' },
+      { protocol: 'https', hostname: 'img.notionusercontent.com' },
+      { protocol: 'https', hostname: 'img.notion.so' },
+      { protocol: 'https', hostname: 'sqlite.org' },
+      { protocol: 'https', hostname: 'static.ads-twitter.com' },
+      { protocol: 'https', hostname: 'ryrie.ink' },
+      { protocol: 'https', hostname: 'file.notion.so' },
+      { protocol: 'https', hostname: 'notion-emojis.s3-us-west-2.amazonaws.com' }
+
     ],
     formats: ['image/avif', 'image/webp'],
     dangerouslyAllowSVG: true,
