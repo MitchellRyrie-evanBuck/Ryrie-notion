@@ -433,3 +433,47 @@
 .notion-equation.notion-equation-block {
   align-items: center;
 }
+
+.notion-collection{
+  width: 100%;
+}
+/* Web端适配 - 更好的文本截断处理 */
+@media (min-width: 768px) {
+  .notion-list-collection .notion-list-body .notion-list-item {
+    max-width: 100%;
+    display: block;
+  }
+
+  .notion-list-collection .notion-list-item .notion-page-title-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 70%;
+    display: inline-block;
+  }
+}
+
+/* 移动端适配 - 更紧凑的布局 */
+@media (max-width: 767px) {
+  .notion-list-collection .notion-list-body .notion-list-item {
+    padding: 8px 0;
+  }
+
+  .notion-list-collection .notion-list-item .notion-page-title-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 60%;
+    display: inline-block;
+  }
+
+  /* 隐藏移动端不必要的属性 */
+  .notion-list-collection .notion-property-date {
+    display: none;
+  }
+}
+
+.notion-list-body .notion-page-link{
+  height: 32px;
+  padding-top: 5px;
+}

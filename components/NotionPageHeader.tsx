@@ -142,7 +142,7 @@ export function NotionPageHeader({
               whileTap={{ scale: 0.8 }}
               layout
             >
-              <span >More</span>
+              <span >Projects</span>
             </motion.div>
           </Link>
 
